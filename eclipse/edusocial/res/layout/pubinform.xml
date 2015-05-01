@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<!-- 
+	<com.jiajun.edusocial.ActionBar4pubInform 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.jiajun.edusocial.ActionBar4pubInform>
+	
+	 -->
+    
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ee3d11"
+    android:padding="10dp" >
+    
+	<LinearLayout 
+	    android:orientation="horizontal"
+        android:layout_width="match_parent" 
+    	android:layout_height="wrap_content" 
+    	android:layout_alignParentLeft="true"
+    	
+	    >
+	    <ImageView
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:padding="5dp"
+	        android:src="@drawable/back"
+	        android:id="@+id/back2inform"
+	        android:layout_gravity="left|center_vertical"
+	        />
+	    <TextView 
+	        android:id="@+id/title4t1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/pubinform"
+    		android:layout_marginLeft="10dip"
+    		android:textSize="18dp"
+    		android:layout_weight="1"
+    		android:layout_gravity="left|center_vertical"
+    		android:textColor="#fff"
+	        />
+	</LinearLayout>
+	<TextView 
+	    android:id="@+id/pubBtnInform"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:text="@string/publish"
+	    android:textSize="18dp"
+	    android:textColor="#fff"
+	    android:layout_centerVertical="true"
+	    />
+	
+	</RelativeLayout>
+    <LinearLayout 
+        android:id="@+id/pubInformlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        >
+                <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/informtypehint"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:id="@+id/selectType4Inform"
+            />
+        <RadioGroup 
+            android:id="@+id/rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <RadioButton 
+                android:id="@+id/rb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/schoolinform"/>
+            <RadioButton 
+                android:id="@+id/rb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="@string/classinform"/>
+        </RadioGroup>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/informclasshint"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="23sp"
+            android:id="@+id/selectObject4Inform"/>
+      <!--   <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通知标题："
+            android:textSize="15dp"
+            />      
+             -->
+        <EditText 
+            android:layout_width="match_parent"
+            android:layout_marginTop="33dp"
+            android:layout_height="25dp"
+            android:id="@+id/informTitle"
+            android:textSize="25sp"
+            android:maxLength="22"
+            android:singleLine="true"
+			android:hint="@string/informtitle"
+            android:background="@null"
+            />
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+		android:layout_marginTop="8dp"
+        android:background="#F8BEFD"
+		/>
+      
+      <!--  
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:text="通知详情："
+            android:textSize="15dp"/>
+            
+            -->
+        <EditText 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/informDetail"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:singleLine="false"
+            android:gravity="top"
+            android:lineSpacingExtra="7dp"
+            android:background="@null"
+			android:hint="@string/pubinformhwhint"
+            />
+         
+    </LinearLayout>
+</LinearLayout>

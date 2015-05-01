@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="7dp"
+    android:id="@+id/ll4photoXListItem">
+    <ImageView 
+        android:id="@+id/iv4dttx"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="7dp"
+        android:scaleType="centerCrop"
+        />
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_marginLeft="7dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+	    <LinearLayout 
+	    android:layout_width="match_parent" 
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+		    <LinearLayout 
+		        android:layout_width="0dp"
+		        android:layout_weight="1"
+		        android:layout_height="35dp"
+		        android:id="@+id/left"
+		        android:orientation="vertical"
+		        >
+		        <TextView 
+		            android:layout_width="match_parent"
+		            android:layout_height="20dp"
+		            android:id="@+id/tv4content"
+		            android:textSize="15sp"
+		            />
+		        <TextView 
+		            android:layout_width="match_parent"
+		            android:layout_height="15dp"
+		            android:id="@+id/tv4time"
+		            android:layout_marginTop="3dp"
+		            android:textSize="10sp"/>
+		    </LinearLayout>
+		    <LinearLayout 
+		        android:layout_width="60dp"
+		        android:layout_height="35dp"
+		        android:id="@+id/right"
+		        android:orientation="vertical">
+		        <TextView 
+		            android:layout_width="match_parent"
+		            android:layout_height="35dp"
+		            android:textSize="15sp"
+		            android:gravity="right"
+		            android:id="@+id/tv4user"/>
+		    </LinearLayout>
+	    </LinearLayout>
+
+<!-- 
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/tv4path"
+	    android:textSize="10dp"/>
+    <GridView 
+        android:id="@+id/noScrollgridview"
+        android:layout_width="290dp"
+        android:layout_height="350dp"
+        android:layout_marginLeft="5dp"
+        android:horizontalSpacing="3dp"        
+        android:numColumns="3"
+        android:scrollbars="none"
+       	android:visibility="gone"
+        android:verticalSpacing="5dp" >
+    </GridView>
+
+ -->
+ 	
+		<com.jiajun.edusocial.SelectPicLocally.MyGridView 
+		    android:id="@+id/noScrollgridview"
+	        android:layout_width="290dp"
+	        android:layout_height="wrap_content"
+
+	        android:horizontalSpacing="3dp"        
+	        android:numColumns="3"
+	        android:scrollbars="none"
+	       	android:visibility="gone"
+	       	android:layout_marginTop="5dp"
+	        android:verticalSpacing="3dp">
+		</com.jiajun.edusocial.SelectPicLocally.MyGridView>
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal">
+		<!-- 
+		    <Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="right"
+		        android:background="@drawable/btn"
+		        android:text="评论"
+		        
+		        android:id="@+id/PLbtn"/>
+		 -->    
+		
+		
+		</LinearLayout>
+		
+		<!-- 
+		<LinearLayout
+			    android:id="@+id/ll4comment"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical">
+			    
+			</LinearLayout>
+		 -->
+					
+	</LinearLayout>
+</LinearLayout>
+
+
