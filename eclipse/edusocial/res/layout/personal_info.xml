@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical" >
+    <!-- 
+    	<com.jiajun.edusocial.ActionBar4personalInfo 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+    </com.jiajun.edusocial.ActionBar4personalInfo>
+     -->
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ee3d11"
+    android:padding="10dp" >
+    
+	<LinearLayout 
+	    android:orientation="horizontal"
+        android:layout_width="match_parent" 
+    	android:layout_height="wrap_content" 
+    	android:layout_alignParentLeft="true"
+    	
+	    >
+	    <ImageView
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:src="@drawable/back"
+	        android:padding="5dp"
+	        android:id="@+id/back2personalMain"
+	        android:layout_gravity="left|center_vertical"
+	        />
+	    <TextView 
+	        android:id="@+id/title4t1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/personalinfo"
+    		android:layout_marginLeft="10dip"
+    		android:textSize="18dp"
+    		android:layout_weight="1"
+    		android:layout_gravity="left|center_vertical"
+    		android:textColor="#fff"
+	        />
+
+	</LinearLayout>
+
+	
+</RelativeLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="left|bottom"
+            android:text="@string/tx:"/>
+        <ImageView 
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/perTx"
+            android:src="@drawable/withouttouxiang"
+            android:layout_gravity="right|center_vertical"
+            android:scaleType="centerCrop"
+		/>
+    </LinearLayout>
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ee3d11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/nick:"
+            android:layout_gravity="left|center_vertical"
+            />
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+
+            android:gravity="right"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:textColor="#5CBEFD"
+            android:id="@+id/tv_nickName4personalInfo"
+            android:layout_gravity="right|center_vertical"/>
+    </LinearLayout>
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ee3d11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+/>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+                android:orientation="horizontal"
+
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical|left"
+            android:text="@string/identity:"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:text="@string/loading"
+                        android:gravity="right"
+
+            android:textSize="15sp"
+            android:textColor="#5CBEFD"
+            android:layout_weight="1"
+            android:id="@+id/tv_identity4personalInfo"/>
+    </LinearLayout>
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ee3d11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+/>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+
+        >
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/school:"
+            android:textSize="20sp"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+
+            android:text="@string/loading"
+            android:textSize="15sp"
+            android:textColor="#5CBEFD"
+            android:id="@+id/tv_school4personalInfo"
+            android:layout_gravity="right|center_vertical"/>
+    </LinearLayout>
+        <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ee3d11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+/>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+                android:orientation="horizontal"
+
+        >
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class:"
+            android:textSize="20sp"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="right|center_vertical"
+                        android:gravity="right"
+
+                        			android:textSize="15sp"
+                        			android:textColor="#5CBEFD"
+            android:text="@string/loading"
+            android:id="@+id/tv_class4personalInfo"/>
+    </LinearLayout>
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ee3d11"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+/>
+      <Button 
+          android:id="@+id/addF"
+          android:layout_marginTop="20dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/btn"
+          android:textSize="18sp"
+          android:text="@string/addfriend"/>
+</LinearLayout>

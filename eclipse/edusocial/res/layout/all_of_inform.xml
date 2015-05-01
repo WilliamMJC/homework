@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!-- 
+    	<com.jiajun.edusocial.ActionBar4inform 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></com.jiajun.edusocial.ActionBar4inform>
+     -->
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ee3d11"
+    android:padding="10dp" >
+    
+	<LinearLayout 
+	    android:orientation="horizontal"
+        android:layout_width="match_parent" 
+    	android:layout_height="wrap_content" 
+    	android:layout_alignParentLeft="true"
+    	
+	    >
+	    <ImageView
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:padding="5dp"
+	        android:src="@drawable/back"
+	        android:id="@+id/back2function2"
+	        android:layout_gravity="left|center_vertical"
+	        />
+	    <TextView 
+	        android:id="@+id/title4t1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/homework"
+    		android:layout_marginLeft="10dip"
+    		android:textSize="18dp"
+    		android:layout_weight="1"
+    		android:layout_gravity="left|center_vertical"
+    		android:textColor="#fff"
+	        />
+	</LinearLayout>
+	<TextView 
+	    android:id="@+id/publishInform"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:text="@string/publish"
+	    android:textSize="18dp"
+	    android:textColor="#fff"
+	    android:layout_centerVertical="true"
+	    />
+	
+</RelativeLayout>
+    	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/loadLL"
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    >
+		<TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/reading"
+		    android:textSize="20sp"
+		    />
+	</LinearLayout>
+    <com.jiajun.edusocial.xlistview.XListView 
+                android:id="@+id/xListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:fastScrollEnabled="true"
+        android:cacheColorHint="#00000000"
+        ></com.jiajun.edusocial.xlistview.XListView>
+</LinearLayout>

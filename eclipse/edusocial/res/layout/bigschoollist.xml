@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ee3d11"
+    android:padding="10dp" >
+    
+	<LinearLayout 
+	    android:orientation="horizontal"
+        android:layout_width="match_parent" 
+    	android:layout_height="wrap_content" 
+    	android:layout_alignParentLeft="true"
+    	
+	    >
+	    <ImageView
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:padding="5dp"
+	        android:src="@drawable/back"
+	        android:id="@+id/back2mainfromsearch"
+	        android:layout_gravity="left|center_vertical"
+	        />
+	    <TextView 
+	        android:id="@+id/title4t1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/searchfriend"
+    		android:layout_marginLeft="10dip"
+    		android:textSize="18dp"
+    		android:layout_weight="1"
+    		android:layout_gravity="left|center_vertical"
+    		android:textColor="#fff"
+	        />
+	</LinearLayout>
+	<TextView 
+	    android:id="@+id/pubBtnPhoto"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:text="@string/search"
+	    android:textSize="18dp"
+	    android:textColor="#fff"
+	    android:layout_centerVertical="true"
+	    />
+	
+</RelativeLayout>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/loadLL"
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    >
+		<TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/reading"
+		    android:textSize="20sp"
+		    />
+	</LinearLayout>
+    <SearchView 
+        android:id="@+id/sv4search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></SearchView>
+    <ListView 
+        android:id="@+id/lv4schoollist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+    </ListView>
+
+
+    
+</LinearLayout>
