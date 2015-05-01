@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ee3d11"
+    android:padding="10dp"
+    android:orientation="horizontal" >
+    <TextView 
+        android:textSize="18dp"
+        android:text="教学互动系统"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        
+        />
+    <ImageView 
+        android:id="@+id/moreBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="onMoreClick"
+        android:src="@drawable/three"
+        android:layout_alignParentRight="true"
+        />
+    <ImageView 
+        android:id="@+id/addBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="onAdditionClick"
+        android:src="@drawable/plus_vector2"
+        android:layout_toLeftOf="@id/moreBtn"/>
+    <ImageView 
+        android:id="@+id/searchBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+		android:onClick="onSearchClick"
+        android:src="@drawable/abc_ic_search"
+        android:layout_toLeftOf="@id/addBtn"/>
+
+</RelativeLayout>

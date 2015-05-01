@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jj.tmdemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="14" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+	<uses-permission android:name="android.permission.CAMERA" /> 
+	<uses-feature android:name="android.hardware.camera" /> 
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.jj.tmdemo.register"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".registerD"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.teacher.views.teacherLogIn" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.parent.views.parentLogIn" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.student.views.studentLogIn" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.newAlbum4t" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.newAlbum4s" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.newAlbum4p" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.HomeworkDetail" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.addContact" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.personalInfo" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.MainUI.MainUI4me" >
+        </activity>
+        <activity android:name="com.jj.tmdemo.AllOfHomework"></activity>
+        <activity android:name="com.jj.tmdemo.AllOfInform"></activity>
+        <activity android:name="com.jj.tmdemo.AllOfPhoto"></activity>
+        <activity android:name="com.jj.tmdemo.pubHW"></activity>
+        <activity android:name="com.jj.tmdemo.pubInform"></activity>
+        <activity android:name="com.jj.tmdemo.pubPhoto"></activity>
+        <activity android:name="com.jj.tmdemo.Search4me"></activity>
+        <activity android:name="com.jj.tmdemo.SelectClassBig"></activity>
+        <activity android:name="com.jj.tmdemo.SelectSchool"></activity>
+        <activity android:name="com.jj.tmdemo.SelectClassNormal"></activity>
+        <activity android:name="com.jj.tmdemo.LittleClassSelect"></activity>
+        <activity android:name="com.jj.tmdemo.pic.ImageGridActivity"></activity>
+        <activity android:name="com.jj.tmdemo.pic.PhotoActivity"></activity>
+        <activity android:name="com.jj.tmdemo.pic.selectPicFromAlbum"></activity>
+        <activity android:name="com.jj.tmdemo.pic.PActivity"></activity>
+    </application>
+
+</manifest>

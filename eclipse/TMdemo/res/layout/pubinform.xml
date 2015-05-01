@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <com.jj.tmdemo.ActionBar4pubInform 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.jj.tmdemo.ActionBar4pubInform>
+
+    <LinearLayout 
+        android:id="@+id/pubInformlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical"
+        >
+                <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="选择通知类型"
+            android:gravity="center"
+            android:id="@+id/selectType4Inform"
+            />
+        <RadioGroup 
+            android:id="@+id/rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <RadioButton 
+                android:id="@+id/rb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="学校通知"/>
+            <RadioButton 
+                android:id="@+id/rb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:text="班级通知"/>
+        </RadioGroup>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="选择通知班级"
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/selectObject4Inform"/>
+      <!--   <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通知标题："
+            android:textSize="15dp"
+            />      
+             -->
+        <EditText 
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/informTitle"
+            android:textSize="15dp"
+            android:maxLength="22"
+            android:singleLine="true"
+			android:hint="通知标题"
+            android:background="@null"
+            />
+        <ImageView android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#fff"/>
+      <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="#CFC9CE"
+		/>
+      
+      <!--  
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:text="通知详情："
+            android:textSize="15dp"/>
+            
+            -->
+        <EditText 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/informDetail"
+            android:textSize="15dp"
+            android:paddingTop="10dp"
+            android:singleLine="false"
+            android:gravity="top"
+            android:lineSpacingExtra="5dp"
+            android:background="@null"
+			android:hint="写些什么吧..."
+            />
+         
+    </LinearLayout>
+</LinearLayout>
