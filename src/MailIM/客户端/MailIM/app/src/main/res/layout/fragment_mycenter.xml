@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F3F6"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F3F6">
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:text="个人中心" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout style="@style/wrap_layout" >
+        <!-- 上圆角-->
+        <LinearLayout
+            android:id="@+id/ll_1"
+            style="@style/top_layout">
+            <TextView
+                android:id="@+id/my_context"
+                style="@style/usertext"
+                android:text="我的课程"
+                />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View style="@style/bg_line"/>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+            <TextView
+                android:id="@+id/my_works"
+                style="@style/usertext"
+                android:text="我的作业" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <!-- 无圆角-->
+        <LinearLayout style="@style/mid_layout">
+            <TextView
+                android:id="@+id/my_teacher"
+                style="@style/usertext"
+                android:text="我的老师" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <!-- 下圆角-->
+        <LinearLayout
+            android:id="@+id/identity"
+            style="@style/mid_layout">
+            <TextView
+                android:id="@+id/identity_1"
+                style="@style/usertext"
+                android:text="身份" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/setting"
+            style="@style/mid_layout">
+            <TextView
+                style="@style/usertext"
+                android:text="设置" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <!-- 下圆角-->
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/receivework"
+            style="@style/mid_layout">
+            <TextView
+                style="@style/usertext"
+                android:text="收作业" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/checkwork"
+            style="@style/bottom_layout">
+            <TextView style="@style/usertext" android:text="查看作业" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- 全圆角-->
+    <LinearLayout style="@style/wrap_layout">
+        <LinearLayout style="@style/single_layout">
+            <TextView
+                android:id="@+id/author"
+                style="@style/usertext"
+                android:text="软件作者"/>
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
