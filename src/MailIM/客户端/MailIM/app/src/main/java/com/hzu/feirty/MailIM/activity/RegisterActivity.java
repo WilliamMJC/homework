@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
                         } else {
                             btn_register.setEnabled(true);
-                            Toast.makeText(RegisterActivity.this, "注册失败！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "用户名已存在，请重新注册！", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

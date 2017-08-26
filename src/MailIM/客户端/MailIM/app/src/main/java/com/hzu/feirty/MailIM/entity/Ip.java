@@ -5,6 +5,6 @@ package com.hzu.feirty.MailIM.entity;
 public class Ip {
     //public static final String ip = "http://192.168.1.188:8080";
     //public static final String ip = "http://115.29.105.161";
-    public static final String ip = "http://192.168.43.7:8080";
+    public static final String ip = "http://192.168.2.211:8080";
     //public static final String ip = "http://192.168.1.108:8080";
 }

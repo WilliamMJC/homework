@@ -13,10 +13,13 @@ import javax.mail.MessagingException;
 import javax.mail.Part;
 import javax.mail.Store;
 
+import com.hzu.feirty.dao.ConstructionDaoImpl;
+import com.hzu.feirty.dao.CourseDaoImpl;
 import com.hzu.feirty.dao.EmailDaoImpl;
 import com.hzu.feirty.dao.HomeWorkDaoImpl;
 import com.hzu.feirty.dao.StudentDaoImpl;
 import com.hzu.feirty.dao.TeacherDaoImpl;
+import com.hzu.feirty.entity.Course;
 import com.hzu.feirty.entity.Email;
 import com.hzu.feirty.entity.HomeWork;
 import com.hzu.feirty.entity.Student;
@@ -125,6 +128,8 @@ public class MailReceive {
             	System.out.println(pmm.getBodyText());
             	pmm.setDateFormat("yy.MM.dd-HH:mm");
             	mail.setSentdata(pmm.getSentDate());
+            	mail.setMessageID(pmm.getMessageId());
+            	mail.setAttachmentname(pmm.getFilename((MimeMessage)messages[i]));
                 //PraseMimeMessage reciveMail = new PraseMimeMessage((MimeMessage) messages[i]);  
             	EmailDaoImpl eDaoImpl =new EmailDaoImpl();
             	eDaoImpl.Insert(mail);
@@ -135,7 +140,7 @@ public class MailReceive {
         }		
 	}
 	
-	public static int  getAllMailByTeacher2(String name) throws Exception{
+	public static int  getAllMailByTeacher2(String name,String docsPath) throws Exception{
 		List<Email> mailList = new ArrayList<Email>();
 		TeacherDaoImpl tDao = new TeacherDaoImpl();
 		String number="";
@@ -170,19 +175,26 @@ public class MailReceive {
             	}
             	if(!number.equals("")&& new StudentDaoImpl().isNumber(name, number)){
             		if(pmm.isContainAttach((Part)messages[i])){
-            			File file=new File("c:\\temp\\");
+            			File file=new File(docsPath);
             			if(!file.exists()){
             				file.mkdirs();
             			}
+            			//得到发送时间
             			String senddate =pmm.getSentDate();
             			pmm.setAttachPath(file.toString());
             			pmm.saveAttachMent((Part)messages[i]);
+            			//得到文件名
             			String filename =pmm.getFilename();
             			File path = new File(file.toString()+"\\"+filename);
+            			//计算作业文件大小
             			GetFileSize getFileSize = new GetFileSize();
-            			String filesize =getFileSize.FormetFileSize(getFileSize.getFileSizes(path));
-            			HomeWork homework =new HomeWork(number,filename,filesize,senddate);
-            			boolean isInsert = new  HomeWorkDaoImpl().Insert(homework);	
+            			String filesize =getFileSize.FormetFileSize(getFileSize.getFileSizes(path));         			
+            			
+            			//这里有问题？？？？？
+            			//将作业得学号、文件名、文件大小、发送时间存入homework表中
+            			HomeWorkDaoImpl HomeWorkDaoImpl = new HomeWorkDaoImpl();
+            			HomeWork homework =new HomeWork(number,filename,filesize,senddate,1);
+            			HomeWorkDaoImpl.inSert(homework);	
             		}
             	}
                 mailList.add(mail);// 添加到邮件列表中
@@ -193,7 +205,7 @@ public class MailReceive {
 	public static boolean  getAllMailByNumber(String name) throws Exception{
 		//List<Email> mailList = new ArrayList<Email>();
 		
-		Store store =ConnUtil.login("pop.qq.com",new TeacherDaoImpl().find2(name).getMail_name(),new TeacherDaoImpl().find2(name).getMail_name());
+		Store store =ConnUtil.login("pop.qq.com",new TeacherDaoImpl().find2(name).getMail_name(),new TeacherDaoImpl().find2(name).getMail_pwd());
 		Folder folder = store.getFolder("INBOX");
 		folder.open(Folder.READ_ONLY);
 	    int mailCount = folder.getMessageCount();
@@ -207,15 +219,21 @@ public class MailReceive {
              for (int i = 0; i < messages.length; i++) {
             	//Email mail = new Email();
             	PraseMimeMessage pmm = new PraseMimeMessage((MimeMessage)messages[i]);
-            	if(pmm.getSubject().equals("学号")){
+            	if(pmm.getSubject().contains("[学号]")){
             		if(pmm.isContainAttach((Part)messages[i])){
+            			String course_name = pmm.getSubject().substring(4);
             			File file=new File("c:\\tmp\\");
             			if(!file.exists()){
             				file.mkdirs();
             			}
             			pmm.setAttachPath(file.toString());
             			pmm.saveAttachMent((Part)messages[i]);
-            			IOUtil.Txt("c:\\tmp\\学号.txt");
+            			int numbers =IOUtil.Txt("c:\\tmp\\[学号]Android开发.txt",course_name,name);
+            			Course course = new Course();
+            			course.setName(course_name);
+            			course.setStu_number(numbers);
+            			course.setTea_name(name);
+            			new CourseDaoImpl().inSert(course);            			        		
             		}
             		return true;
             	}             

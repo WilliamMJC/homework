@@ -14,12 +14,6 @@ public class ConnUtil {
         Properties props =  System.getProperties();
         Session session = Session.getDefaultInstance(props);
         try {
-            // 准备连接服务器的会话信息
-           /* Properties props =  System.getProperties();
-            props.setProperty("mail.store.protocol", "pop");
-            props.setProperty("mail.imap.host", "imap.qq.com");
-            props.setProperty("mail.imap.port", "143");
-            */
             /**  QQ邮箱需要建立ssl连接 */
             props.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
             props.setProperty("mail.pop3.socketFactory.fallback", "false");
@@ -33,7 +27,6 @@ public class ConnUtil {
         }
         catch (MessagingException e) {
             e.printStackTrace();
-            return null;
         }
         return store;
     }

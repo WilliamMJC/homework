@@ -52,7 +52,7 @@ public class DoGetTeacher extends HttpServlet {
 			try {
 				Teacher teacher = new Teacher(name,workmail,mailpwd,school,peasonmail,user);
 				new TeacherDaoImpl().add(teacher);
-				if(MailReceive.getAllMailByNumber(name)){
+				if(MailReceive.getAllMailByNumber(user)){
 					array.put("code", "success");
 					array.put("msg", "发送成功");
 					array.put("data", "");

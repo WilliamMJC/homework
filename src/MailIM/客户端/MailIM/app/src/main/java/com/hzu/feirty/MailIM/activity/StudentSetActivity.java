@@ -1,5 +1,6 @@
 package com.hzu.feirty.MailIM.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,6 +31,7 @@ public class StudentSetActivity extends AppCompatActivity {
     private static final String MAIL = "mail";
     private static final String PASSWORD = "password";
     private String url = Ip.ip + "/MailIM/DoGetStudent?";
+    private String url3 = Ip.ip + "/MailIM/DoGetType?";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stu_set);
@@ -47,6 +49,7 @@ public class StudentSetActivity extends AppCompatActivity {
                 String mail = et_stu_email.getText().toString();
                 String number = et_number.getText().toString();
                 saveSet(teacher,school,mail,number);
+
             }
         });
     }
@@ -76,6 +79,7 @@ public class StudentSetActivity extends AppCompatActivity {
                             PreferencesUtil.setSharedStringData(StudentSetActivity.this, PASSWORD, pwd);
                             Store store = ConnUtil.login("pop.qq.com",tea_mail,pwd);*/
                             Toast.makeText(StudentSetActivity.this, "验证成功!", Toast.LENGTH_SHORT).show();
+                            setType2("student");
                             btn_ok.setEnabled(false);
                         } else {
                             //  btn_login.setEnabled(true);
@@ -93,6 +97,44 @@ public class StudentSetActivity extends AppCompatActivity {
             @Override
             public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
                 //DialogView.dismiss();
+                Toast.makeText(StudentSetActivity.this, "网络连接失败，请查看网络设置", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setType2(String type){
+        RequestParams params = new RequestParams();
+        params.put("action", "settype2");
+        String user =PreferencesUtil.getSharedStringData(StudentSetActivity.this,"username");
+        params.put("user", user);
+        params.put("type",type);
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setConnectTimeout(5000);
+        client.post(url3, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int i, org.apache.http.Header[] headers, byte[] responseBody) {
+                String str = new String(responseBody);
+                if (str != null) {
+                    try {
+                        JSONObject object = new JSONObject(str);
+                        if (object.getString("code").equals("success")) {
+                            Toast.makeText(StudentSetActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(StudentSetActivity.this,MainFragment.class);
+                            startActivity(intent);
+                        } else if(object.getString("code").equals("false")){
+                            Toast.makeText(StudentSetActivity.this, "设置失败", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(StudentSetActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                }
+            }
+            @Override
+            public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
                 Toast.makeText(StudentSetActivity.this, "网络连接失败，请查看网络设置", Toast.LENGTH_SHORT).show();
             }
         });

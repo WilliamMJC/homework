@@ -25,6 +25,7 @@ public class Email implements Serializable {
     private String subject;
     private String sentdata;
     private String content;
+    private String attachment;
     private boolean replysign;
     private boolean html;
     private boolean news;
@@ -135,6 +136,14 @@ public class Email implements Serializable {
 
     public void setAttachments(ArrayList<String> attachments) {
         this.attachments = attachments;
+    }
+
+    public String getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        this.attachment = attachment;
     }
 
 }

@@ -133,9 +133,11 @@ public class UserDaoImpl extends BaseDaoImpl {
 	 * 添加用户数据
 	 * 
 	 * @param news
+	 * @throws SQLException 
 	 */
-	public boolean Save(User user) {
+	public boolean Save(User user) throws SQLException {
 		conn = this.getConnection();
+		if(!find(user.getUsername())){
 		try {
 			pstmt = conn
 					.prepareStatement("insert into user(username,password,type)values(?,?,?)");
@@ -150,6 +152,9 @@ public class UserDaoImpl extends BaseDaoImpl {
 			return false;
 		} finally {
 			this.closeAll(null, pstmt, conn);
+		}
+		}else{
+			return false;
 		}
 	}
 
@@ -199,5 +204,17 @@ public class UserDaoImpl extends BaseDaoImpl {
 			this.closeAll(null, pstmt, conn);
 		}
 	}
+	
+	//查找
+	public boolean find(String name) throws SQLException{
+		conn = this.getConnection();
+		pstmt = conn.prepareStatement("select * from user where username='" + name + "'");
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			return true;
+		}else {
+			return false;
+		}
+	}	
 }
 

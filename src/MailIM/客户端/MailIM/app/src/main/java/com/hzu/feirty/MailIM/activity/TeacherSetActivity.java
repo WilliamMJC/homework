@@ -32,6 +32,7 @@ public class TeacherSetActivity extends AppCompatActivity{
     private EditText et_peasonmail;
     private Button btn_ok;
     private String url = Ip.ip + "/MailIM/DoGetTeacher?";
+    private String url3 = Ip.ip + "/MailIM/DoGetType?";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea_set);
@@ -60,6 +61,8 @@ public class TeacherSetActivity extends AppCompatActivity{
     }
     public void saveSet(String name,String school,String workmail,String pwd,String peasonmail){
         RequestParams params = new RequestParams();
+        String user =PreferencesUtil.getSharedStringData(TeacherSetActivity.this,"username");
+        params.put("user", user);
         params.put("name",name );
         params.put("school",school);
         params.put("workmail",workmail);
@@ -77,7 +80,7 @@ public class TeacherSetActivity extends AppCompatActivity{
                         JSONObject object = new JSONObject(str);
                         if (object.getString("code").equals("success")) {
                             Toast.makeText(TeacherSetActivity.this, "验证成功，学号信息上传成功！", Toast.LENGTH_SHORT).show();
-                            PreferencesUtil.setSharedBooleanData(TeacherSetActivity.this, "WORKMAIL", true);
+                            setType2("teacher");
                             btn_ok.setEnabled(false);
                         } else {
                           //  btn_login.setEnabled(true);
@@ -95,6 +98,42 @@ public class TeacherSetActivity extends AppCompatActivity{
             @Override
             public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
                 //DialogView.dismiss();
+                Toast.makeText(TeacherSetActivity.this, "网络连接失败，请查看网络设置", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setType2(String type){
+        RequestParams params = new RequestParams();
+        params.put("action", "settype2");
+        String user =PreferencesUtil.getSharedStringData(TeacherSetActivity.this,"username");
+        params.put("user", user);
+        params.put("type",type);
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setConnectTimeout(5000);
+        client.post(url3, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int i, org.apache.http.Header[] headers, byte[] responseBody) {
+                String str = new String(responseBody);
+                if (str != null) {
+                    try {
+                        JSONObject object = new JSONObject(str);
+                        if (object.getString("code").equals("success")) {
+                            Toast.makeText(TeacherSetActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
+                        } else if(object.getString("code").equals("false")){
+                            Toast.makeText(TeacherSetActivity.this, "设置失败", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(TeacherSetActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                }
+            }
+            @Override
+            public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
                 Toast.makeText(TeacherSetActivity.this, "网络连接失败，请查看网络设置", Toast.LENGTH_SHORT).show();
             }
         });

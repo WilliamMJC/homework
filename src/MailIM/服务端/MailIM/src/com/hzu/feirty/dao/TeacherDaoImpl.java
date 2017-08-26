@@ -18,13 +18,14 @@ public class TeacherDaoImpl extends BaseDaoImpl {
 	 public boolean add(Teacher user) throws Exception{
 		 conn = this.getConnection();
 		 try {
-			 String sql = "insert into mailbyuser(user_teacher,mail_name,mail_pwd,peasonmail,school) values (?,?,?,?,?) ";
+			 String sql = "insert into mailbyuser(user_teacher,mail_name,mail_pwd,peasonmail,school,nickname) values (?,?,?,?,?,?) ";
 			 pstmt = conn.prepareStatement(sql);
 			 pstmt.setString(1,user.getUser_teacher());
 			 pstmt.setString(2,user.getMail_name());
 			 pstmt.setString(3,user.getMail_pwd());
 			 pstmt.setString(4,user.getPeasonmail());
 			 pstmt.setString(5,user.getSchool());
+			 pstmt.setString(6,user.getNickname());
 			 pstmt.executeUpdate();
 			 return true;
 		 }catch (SQLException e) {

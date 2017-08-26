@@ -27,7 +27,7 @@ import com.hzu.feirty.entity.Construction;
 import com.hzu.feirty.entity.Email;
 import com.hzu.feirty.entity.Teacher;
 import com.hzu.feirty.utils.GetFileSize;
-
+import com.hzu.feirty.utils.ExportExcel;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -81,6 +81,10 @@ public class DoGetMail extends HttpServlet {
 			JSONArray arrays = new JSONArray();		
 			try {
 				String str =new UserDaoImpl().SearchType(user);
+				/*
+				 * 老师部分，作业邮件内容接收
+				 * 
+				 */
 				if(str.equals("teacher")){
 					maillist = MailReceive.getAllMailByTeacher(user);
 					array.put("code", "success");
@@ -91,10 +95,16 @@ public class DoGetMail extends HttpServlet {
 						object.put("subject", maillist.get(i).getSubject());
 						object.put("content", maillist.get(i).getContent());
 						object.put("time", maillist.get(i).getSentdata());
+						object.put("attachment", maillist.get(i).getAttachmentname());
 						arrays.add(object);
 					}
 					array.put("data", arrays.toString());	
-				}else if(str.equals("student")){
+				}
+				/*
+				 * 学生部分：作业邮件内容接收
+				 * 
+				 */
+				else if(str.equals("student")){
 					maillist = MailReceive.getAllMail(user);
 					array.put("code", "success");
 					array.put("msg", "11");	
@@ -105,7 +115,7 @@ public class DoGetMail extends HttpServlet {
 						object.put("content", maillist.get(i).getContent());
 						//System.out.println(maillist.get(i).getContent());
 						object.put("time", maillist.get(i).getSentdata());
-						//object.put("attachment", mails.get(i).getAttachments());
+						object.put("attachment", maillist.get(i).getAttachmentname());
 						arrays.add(object);
 					}
 					array.put("data", arrays.toString());										
@@ -116,7 +126,13 @@ public class DoGetMail extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
-		}else if(action.equals("receive2")){
+		}
+		/*
+		 * 收作业功能，学生邮件作业附件下载
+		 * 
+		 */
+		
+		else if(action.equals("receive2")){
 			try {
 				array.put("code", "success");
 				array.put("msg", "作业下载成功");
@@ -132,12 +148,16 @@ public class DoGetMail extends HttpServlet {
 				System.out.println("作业下载失败");
 			}			
 		}
+		/*
+		 * 学生学号收集功能
+		 * 
+		 */
 		else if(action.equals("number")){
 			try {
 				array.put("code", "success");
 				array.put("msg", "学号添加成功");
 				array.put("data", "");
-				if(MailReceive.getAllMailByNumber("abc")){
+				if(MailReceive.getAllMailByNumber(user)){
 					System.out.println("学号添加成功");					
 				}				
 			} catch (Exception e) {
@@ -148,29 +168,43 @@ public class DoGetMail extends HttpServlet {
 				array.put("data", "");
 				System.out.println("学号添加失败");
 			}			
-		}else if(action.equals("RECEIVEHOMEWORK")){
+		}
+		/*
+		 * 学生作业附件打包发送功能
+		 * 
+		 */
+		else if(action.equals("RECEIVEHOMEWORK")){
 			try {
 				String type=new UserDaoImpl().SearchType(user);
 				if(type.equals("teacher")){
 					Teacher teacher = new TeacherDaoImpl().find2(user);
-					if(!teacher.getPeasonmail().equals("")){					
-						int i = MailReceive.getAllMailByTeacher2(user);
+					if(!teacher.getPeasonmail().equals("")){
+						//作业匹配下载					
+						String docsPath = request.getSession().getServletContext().getRealPath("docs");
+						//  i为作业的数量
+						int i = MailReceive.getAllMailByTeacher2(user,docsPath);
+						String worknumber=String.valueOf(i-1);
 						array.put("code", "success");
-						File sourceFilePath=new File("c:\\temp\\");
-						File zipFilePath=new File("c:\\tmp\\");
+						String imagesPath = request.getSession().getServletContext().getRealPath("images");
+						(new ExportExcel()).test(imagesPath, docsPath);
+						String zipsPath = request.getSession().getServletContext().getRealPath("zips");
+						File sourceFilePath=new File(docsPath);
+						File zipFilePath=new File(zipsPath);
 						String fileName="作业附件";
 						DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
 						String date =dateFormat.format(new Date());
+						//作业压缩zip
 						MailToZip.mailToZip(sourceFilePath.toString(), zipFilePath.toString(), fileName+date);
 						System.out.println("作业打包成功！");
 						File zippath = new File(zipFilePath.toString()+"\\"+fileName+date+".zip");
 						String attachments = zippath.toString();
 						String mailname = teacher.getMail_name();
 						String mailpwd = teacher.getMail_pwd();
-						String peason_mail = teacher.getPeasonmail();
+						String peason_mail = teacher.getPeasonmail();					
+						 // 作业压缩文件发送 
 						MailSenter mailsend =new MailSenter("smtp.qq.com", mailname, mailpwd);					
 						mailsend.send(peason_mail,fileName+date,fileName+date,attachments,"收发作业系统");
-						System.out.println("作业zip发送成功！");
+						System.out.println("作业打包文件发送成功！");
 						String send_date =dateFormat.format(new Date());
             			GetFileSize getFileSize = new GetFileSize();
             			String zip_size =getFileSize.FormetFileSize(getFileSize.getFileSizes(zippath));
@@ -180,28 +214,26 @@ public class DoGetMail extends HttpServlet {
             			//Date sendDate = new Date();
             			java.sql.Date sendtime= new java.sql.Date(new java.util.Date().getTime());
             			ConstructionDaoImpl constructionDaoImpl = new ConstructionDaoImpl();
+            			//统计作业的提交情况
             			Construction construction = new Construction(user, filenumber, zip_name, zip_size,sendtime);
-            			constructionDaoImpl.Insert(construction);
-						array.put("msg", "作业打包成功");
+            			constructionDaoImpl.inSert(construction);
+						array.put("msg", "作业打包发送成功");
 						array.put("zipname",zip_name);
+						array.put("number", worknumber);
 						array.put("zipsize", zip_size);
-						array.put("senddate", send_date);						
-						array.put("data", "");					
+						array.put("sendtime", send_date);									
 					}else{
 						array.put("code", "nomail");
-						array.put("msg", "nomail");
-						array.put("data", "");						
+						array.put("msg", "nomail");					
 					}				
 				}else{
 					array.put("code", "noidentry");
-					array.put("msg", "noidentry");
-					array.put("data", "");					
+					array.put("msg", "noidentry");				
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				array.put("code", "false");
 				array.put("msg", "收作业失败");
-				array.put("data", "");
 				System.out.println("收作业失败");
 			}
 		}

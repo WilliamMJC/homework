@@ -6,26 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.hzu.feirty.entity.Construction;
-import com.hzu.feirty.entity.HomeWork;
+import com.hzu.feirty.entity.WorkMade;
 
-public class ConstructionDaoImpl extends BaseDaoImpl{
+public class WorkMadeDaoImpl extends BaseDaoImpl {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	Connection conn = null;
+	
 	/**
-	 * 作业附件信息记录表
+	 * 发布作业信息记录表
 	 * @param homework
 	 * @return
 	 */
-	public boolean inSert(Construction construction){
+	public boolean inSert(WorkMade workmade){
 		conn = this.getConnection();
 		try {
-			pstmt = conn.prepareStatement("insert into construction(teacher_name,number,zipname,zipsize,time)values(?,?,?,?,?)");
-			pstmt.setString(1, construction.getTeacher_name());
-			pstmt.setLong(2, construction.getNumber());
-			pstmt.setString(3, construction.getZipname());
-			pstmt.setString(4, construction.getZipsize());
-			pstmt.setDate(5, construction.getTime());
+			pstmt = conn.prepareStatement("insert into makework(work_name,work_content,arrange_time,teacher_name)values(?,?,?,?)");
+			pstmt.setString(1, workmade.getWork_name());
+			pstmt.setString(2, workmade.getWork_content());
+			pstmt.setString(3, workmade.getArrange_time());
+			pstmt.setString(4, workmade.getTeacher_name());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -36,5 +36,7 @@ public class ConstructionDaoImpl extends BaseDaoImpl{
 			this.closeAll(null, pstmt, conn);
 		}	
 	}
+	
+	
 
 }

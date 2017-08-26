@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.hzu.feirty.MailIM.R;
 import com.hzu.feirty.MailIM.db.Email;
 import com.hzu.feirty.MailIM.entity.Ip;
+import com.hzu.feirty.MailIM.utils.PreferencesUtil;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -51,7 +52,7 @@ public class EditMailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-        setContentView(R.layout.mailedit);
+        setContentView(R.layout.activity_send);
         getExtra();
         init();
     }
@@ -216,10 +217,13 @@ public class EditMailActivity extends AppCompatActivity {
 
     public void send(String to,String subject,String content){
         RequestParams params = new RequestParams();
+        String user =PreferencesUtil.getSharedStringData(context, USERNAME);
         params.put("to", to);
         params.put("subject", subject);
         params.put("content",content);
+        params.put("user",user);
         params.put("action", "send");
+        handler.obtainMessage(0).sendToTarget();
         AsyncHttpClient client = new AsyncHttpClient();
         client.setConnectTimeout(5000);
         client.post(url, params, new AsyncHttpResponseHandler(){
@@ -230,8 +234,10 @@ public class EditMailActivity extends AppCompatActivity {
                     try {
                         JSONObject object = new JSONObject(str);
                         if (object.getString("code").equals("success")) {
+                            handler.obtainMessage(1).sendToTarget();
                             Toast.makeText(EditMailActivity.this, "发送成功！", Toast.LENGTH_LONG).show();
                         } else {
+                            handler.obtainMessage(1).sendToTarget();
                             Toast.makeText(EditMailActivity.this, "发送失败！", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {

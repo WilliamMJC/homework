@@ -252,7 +252,7 @@ public class MainFragment extends Fragment{
 		params.put("user", user);
 		params.put("action", "receive");
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.setConnectTimeout(10000);
+		client.setConnectTimeout(500000);
 		pd= ProgressDialog.show(MainFragment.this.getActivity(),null, "搜索作业中…");
 		client.post(url, params, new AsyncHttpResponseHandler() {
 			@Override
@@ -268,6 +268,7 @@ public class MainFragment extends Fragment{
 								JSONObject item = array.getJSONObject(a);
 								Email mail = new Email();
 								mail.setFrom(item.getString("from"));
+								mail.setAttachment(item.getString("attachment"));
 								mail.setSubject(item.getString("subject"));
 								mail.setContent(item.getString("content"));
 								mail.setSentdata(item.getString("time"));

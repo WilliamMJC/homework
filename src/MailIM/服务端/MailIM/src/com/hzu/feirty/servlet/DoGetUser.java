@@ -2,6 +2,7 @@ package com.hzu.feirty.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,10 +19,6 @@ import com.hzu.feirty.dao.UserDaoImpl;
 import com.hzu.feirty.entity.User;
 
 public class DoGetUser extends HttpServlet {
-
-	/**
-	 * Constructor of the object.
-	 */
 	public DoGetUser() {
 		super();
 	}
@@ -56,13 +53,18 @@ public class DoGetUser extends HttpServlet {
 			String username = request.getParameter("user");
 			String password = request.getParameter("password");
 			User users = new User(username, password);
-			if (ndi.Save(users)) {
-				array.put("code", "success");
-				array.put("msg", "注册成功");
-				System.out.println("\n用户" + username + "注册成功" + "\ntime:" + time);
-			} else {
-				array.put("code", "failure");
-				array.put("msg", "注册失败");
+			try {
+				if (ndi.Save(users)) {
+					array.put("code", "success");
+					array.put("msg", "注册成功");
+					System.out.println("\n用户" + username + "注册成功" + "\ntime:" + time);
+				} else {
+					array.put("code", "false");
+					array.put("msg", "用户名已存在");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}	
 		}
 		out.print(array);

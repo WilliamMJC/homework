@@ -70,7 +70,46 @@ public class MailSenter {
      * @throws Exception
      */
     public void send(String mailTo, String mailSubject, String mailBody) throws Exception {
-        send(mailTo, mailSubject, mailBody, null, null);
+    	// TODO Auto-generated method stub
+    	// Create the attachment
+    	EmailAttachment attachment = new EmailAttachment();
+    	//附件地址
+    	//attachment.setPath(attachments);
+    	attachment.setDisposition(EmailAttachment.ATTACHMENT);
+    	//附件说明
+    	//attachment.setDescription("Picture of John");
+    	//附件名称
+    	//这里需要加上文件的后缀名
+        //Integer a = attachments.indexOf("\\");
+       // String aftera = attachments.substring(a+5);
+    	//attachment.setName(MimeUtility.encodeText(aftera));
+    	// Create the email message
+    	MultiPartEmail email = new MultiPartEmail();
+    	//邮件服务器
+    	email.setHostName("smtp.qq.com");
+    	//端口号
+    	email.setSmtpPort(25);
+    	//用户名、密码
+    	email.setAuthenticator(new DefaultAuthenticator(username, password));
+    	//email.setSSLOnConnect(true);
+    	email.setSSL(true);
+    	try {
+    	//收件人
+    	email.addTo(mailTo, "老师");
+    	//发件人
+    	email.setFrom(username, "布置作业");
+    	//标题
+    	email.setSubject(mailSubject);
+    	//内容
+    	email.setMsg(mailBody);
+    	// add the attachment
+    	//email.attach(null);
+    	// send the email
+    	email.send();
+    	} catch (EmailException e) {
+    	// TODO Auto-generated catch block
+    	e.printStackTrace();
+    	}
     }
 
     /**

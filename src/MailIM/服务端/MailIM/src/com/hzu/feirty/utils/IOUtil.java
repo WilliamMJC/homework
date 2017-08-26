@@ -112,10 +112,11 @@ public class IOUtil {
             }
         }
     }
-    public static void Txt(String path) throws SQLException {
+    public static int Txt(String path,String course,String teachername) throws SQLException {
         try {
             String str = "";
             String str1 = "";
+            int numbers=0;
             FileInputStream fis = new FileInputStream(path);// FileInputStream
             // 从文件系统中的某个文件中获取字节
             InputStreamReader isr = new InputStreamReader(fis);
@@ -124,16 +125,21 @@ public class IOUtil {
                 str1 = str;
                 Student student = new Student();
                 student.setNumber(str1);
+                student.setCourse(course);
+                student.setTeacher(teachername);
                 new StudentDaoImpl().Save(student);
+                numbers++;
                 System.out.println(str+"添加成功");
             }
             fis.close();
             isr.close();
             br.close();
-
+            return numbers;
         } catch (FileNotFoundException e) {
+        	return -1;
 
         } catch (IOException e) {
+        	return -1;
         }
     }
     

@@ -13,4 +13,5 @@
     <color name="blue">#419DE4</color>
     <color name="gray">#ccc</color>
     <color name="background">#FFFFFF</color>
+    <color name="bg_White">#FFFFFF</color>
 </resources>

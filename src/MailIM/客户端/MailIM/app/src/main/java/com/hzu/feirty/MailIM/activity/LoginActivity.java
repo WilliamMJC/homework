@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hzu.feirty.MailIM.R;
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText et_un, et_pw;        //账号密码输入框
     private Button btn_login;           //登陆按钮
-    private Button btn_register;
+    private TextView btn_register;
     private CheckBox cb_saveuser, cb_autologin;  //记住密码、自动登陆
     private Context context;            
     private Handler handler;           //Handler:接受子线程发送的数据， 并用此数据配合主线程更新UI
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
         //MyApplication myapplication = new MyApplication();
         //myapplication.addActivity(this);
        /* if (getSupportActionBar() != null){
@@ -195,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
         et_un = (EditText) findViewById(R.id.et_un);
         et_pw = (EditText) findViewById(R.id.et_pw);
         btn_login = (Button) findViewById(R.id.btn_login);
-        btn_register = (Button) findViewById(R.id.btn_register);
+        btn_register = (TextView) findViewById(R.id.btn_register);
         cb_saveuser = (CheckBox) findViewById(R.id.cb_savepw);
         cb_autologin = (CheckBox) findViewById(R.id.cb_autologin);
     }

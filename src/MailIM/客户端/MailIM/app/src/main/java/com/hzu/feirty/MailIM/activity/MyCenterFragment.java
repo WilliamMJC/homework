@@ -83,12 +83,12 @@ public class MyCenterFragment extends Fragment {
 				startActivity(intent);
 			}
 		});
-		setting.setOnClickListener(new View.OnClickListener() {
+		/*setting.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				isType();
 			}
-		});
+		});*/
 		checkwork.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -118,10 +118,6 @@ public class MyCenterFragment extends Fragment {
 						})
 						.create();
 				dialog.show();
-				/*pd= ProgressDialog.show(MyCenterFragment.this.getActivity(), "收作业", "正在打包发送…");
-				handler.sendEmptyMessage(0);*/
-
-
 			}
 		});
 		identity.setOnClickListener(new View.OnClickListener() {
@@ -261,7 +257,7 @@ public class MyCenterFragment extends Fragment {
 		params.put("user", user);
 		params.put("action", "RECEIVEHOMEWORK");
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.setConnectTimeout(10000);
+		client.setConnectTimeout(500000);
 		//receiveHomework();
 		client.post(url2, params, new AsyncHttpResponseHandler() {
 			@Override
@@ -279,6 +275,20 @@ public class MyCenterFragment extends Fragment {
 						}else {
 							if (object.getString("code").equals("success")) {
 								handler.sendEmptyMessage(0);
+								String filename = object.getString("zipname");
+								String fileSize = object.getString("zipsize");
+								String number = object.getString("number");
+								String sendtime = object.getString("sendtime");
+								AlertDialog.Builder builder = new AlertDialog.Builder(MyCenterFragment.this.getActivity());
+								View view1 = View.inflate(MyCenterFragment.this.getActivity(),R.layout.activity_dialog,null);
+								TextView tv_filename = (TextView) view1.findViewById(R.id.tv_filename);
+								TextView tv_filesize = (TextView) view1.findViewById(R.id.tv_fileSize);
+								TextView tv_number = (TextView) view1.findViewById(R.id.tv_number);
+								tv_filename.setText(filename);
+								tv_filesize.setText(fileSize);
+								tv_number.setText(number);
+								builder.setView(view1);
+								builder.show();
 								Toast.makeText(MyCenterFragment.this.getActivity(), "收作业成功,请及时查收工作邮箱", Toast.LENGTH_SHORT).show();
 							} else {
 								handler.sendEmptyMessage(0);
@@ -365,9 +375,13 @@ public class MyCenterFragment extends Fragment {
 									// TODO Auto-generated method stub
 									String select_item = items[which].toString();
 									if(select_item.equals("学生")) {
-										setType2("student");
+										Intent intent = new Intent(getActivity(),StudentSetActivity.class);
+										startActivity(intent);
+										//setType2("student");
 									}else{
-										setType2("teacher");
+										Intent intent = new Intent(getActivity(),TeacherSetActivity.class);
+										startActivity(intent);
+										//setType2("teacher");
 									}
 								}
 							});
@@ -419,7 +433,6 @@ public class MyCenterFragment extends Fragment {
 				} else {
 				}
 			}
-
 			@Override
 			public void onFailure(int i, org.apache.http.Header[] headers, byte[] bytes, Throwable throwable) {
 				Toast.makeText(MyCenterFragment.this.getActivity(), "网络连接失败，请查看网络设置", Toast.LENGTH_SHORT).show();

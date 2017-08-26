@@ -6,17 +6,25 @@ public class HomeWork {
 	private String file_name;
 	private String file_size;
 	private String file_time;
+	private int file_number;	
 	
 	public HomeWork(){
 		super();
 	}
-	public HomeWork(String stu_id,String file_name,String file_size,String file_time){
+	public HomeWork(String stu_id,String file_name,String file_size,String file_time,int file_number){
 		this.stu_id =stu_id;
 		this.file_name =file_name;
 		this.file_size =file_size;
 		this.file_time = file_time;	
+		this.file_number = file_number; 
 	}
 	
+	public int getFile_number() {
+		return file_number;
+	}
+	public void setFile_number(int file_number) {
+		this.file_number = file_number;
+	}
 	
 	public String getFile_time() {
 		return file_time;

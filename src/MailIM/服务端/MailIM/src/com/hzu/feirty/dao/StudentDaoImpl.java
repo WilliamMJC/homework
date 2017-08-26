@@ -27,11 +27,12 @@ public class StudentDaoImpl extends BaseDaoImpl {
 	 */
 	public boolean Save(Student user) throws SQLException {
 		conn = this.getConnection();
-		if(!find(user.getNumber())){
+		if(!find(user)){
 		try {
-			pstmt = conn.prepareStatement("insert into student(number)values(?)");
+			pstmt = conn.prepareStatement("insert into student(number,course)values(?,?)");
 			//pstmt.setString(1, user.getName());
 			pstmt.setString(1, user.getNumber());
+			pstmt.setString(2, user.getCourse());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -47,7 +48,7 @@ public class StudentDaoImpl extends BaseDaoImpl {
 	//添加 老师name、邮箱
 	public boolean update(Student user) throws SQLException {
 		conn = this.getConnection();
-		if(find(user.getNumber())){
+		if(find(user)){
 		try {
 			pstmt = conn.prepareStatement("update student set name=?,teacher=?,mail=?,school=? where number='"
 							+ user.getNumber() + "'");
@@ -69,9 +70,9 @@ public class StudentDaoImpl extends BaseDaoImpl {
 		return false;
 	}
 	//查找
-	public boolean find(String number) throws SQLException{
+	public boolean find(Student student) throws SQLException{
 		conn = this.getConnection();
-		pstmt = conn.prepareStatement("select * from student where number='" + number + "'");
+		pstmt = conn.prepareStatement("select * from student where number='" + student.getNumber() + "',teacher='" + student.getTeacher() + "',course='" + student.getCourse() + "'");
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
 			return true;
