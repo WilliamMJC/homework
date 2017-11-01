@@ -1,0 +1,68 @@
+<scroll-view class="page" scroll-y="true" style="height:{{windowHeight}}px;" bindscrolltoupper="onUpper" bindscrolltolower="onLower" bindscroll="onScroll">
+    <view class="page__bd">
+        <!--view class="weui-panel weui-cells_after-title weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+            
+            <navigator url="/pages/conference/conference?key={{conf.enName}}" wx:for="{{searchResults}}" wx:for-item="conf" wx:key="enName" class="weui-cell" hover-class="weui-cell_active" bindtap="hideInput">
+                <view class="weui-cell__bd">
+                    <view>{{conf.cnName}}</view>
+                </view>
+            </navigator>
+        </view--><!-- 循环显示会议名称 -->
+        
+        <view class="weui-panel weui-panel_access" wx:if="{{!role}}">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_appmsg">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <icon type="waiting" size="56"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">未设置身份</view>
+                        <view class="weui-media-box__desc">请先到“我”-“身份”中设置身份。</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="weui-panel weui-panel_access" wx:if="{{role}}">
+            <view class="weui-panel__bd">
+                <!-- 循环显示作业 -->
+                <navigator url="/pages/index/homework?key={{work.name}}" wx:for="{{homeworks}}" wx:for-item="work" wx:key="name" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <!--image class="weui-media-box__thumb" src="../example/images/tags/{{conf.icon}}" /-->
+                        <icon wx:if="{{isTeacher && work.total>work.submits}}" type="waiting" size="56"/>
+                        <icon wx:if="{{isTeacher && work.total<=work.submits}}" type="success" size="56"/>
+                        <icon wx:if="{{isStudent && !work.received}}" type="waiting" size="56"/>
+                        <icon wx:if="{{isStudent && work.received}}" type="success" size="56"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{work.name}} ({{work.total}} | {{work.submits}})</view>
+                        <view class="weui-media-box__desc">{{work.deadline}}, {{work.course}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class="weui-loadmore" wx:if="{{isLower}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{isEnd}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+    </view>
+</scroll-view>
