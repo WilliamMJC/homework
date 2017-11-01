@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        toolbar:titleTextColor="@android:color/white"
+        toolbar:subtitleTextColor="@android:color/white"
+        toolbar:popupTheme="@style/ToolbarPopupTheme">
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout style="@style/wrap_layout">
+        <!-- 上圆角-->
+        <LinearLayout
+            android:id="@+id/ll_11"
+            style="@style/top_layout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user" />
+            <TextView
+                android:id="@+id/my_user"
+                style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="用户名" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/no_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/my_course"
+            style="@style/mid_layout">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/mycourse" />
+            <TextView
+                style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="我的课程"
+                />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/student_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <View style="@style/bg_line"/>
+        <!-- 无圆角-->
+        <LinearLayout
+            style="@style/mid_layout"
+            android:id="@+id/my_works">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/mywork" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="我的作业" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            style="@style/mid_layout"
+            android:id="@+id/my_teacher">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/myteacher" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="我的老师" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/teacher_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            style="@style/mid_layout"
+            android:id="@+id/my_students">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/mywork" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="我的学生" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            style="@style/mid_layout"
+            android:id="@+id/all_works">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/myteacher" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="作业统计" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <!-- 下圆角-->
+        <LinearLayout
+            android:id="@+id/identity"
+            style="@style/mid_layout">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/type" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="身份设置" />
+            <TextView
+                android:id="@+id/id_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未设置" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/data_set"
+            style="@style/mid_layout">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/type" />
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="信息设置" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <!-- 无圆角-->
+        <LinearLayout
+            style="@style/mid_layout"
+            android:id="@+id/setting_1">
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/mysetting" />
+            <TextView  style="@style/usertext"
+                android:layout_marginLeft="10dp"
+                android:text="账号管理" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+    </LinearLayout>
+</LinearLayout>
