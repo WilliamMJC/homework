@@ -1,0 +1,55 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">个人设置</view>
+        <view class="page__desc" wx:if="{{!role}}">
+          未设置身份！请返回上一页，先设置身份。
+        </view>
+        <view class="page__desc" wx:if="{{isTeacher}}">
+          设置学校和收作业邮箱。
+        </view>
+        <view class="page__desc" wx:if="{{isStudent}}">
+          设置学校、学号和发作业邮箱。
+        </view>
+    </view>
+    <!-- 已设置身份时-->
+    <view class="page__bd" wx:if="{{role}}">
+        <view class="weui-cells__title">学校</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学校全称" value="{{school}}" bindinput="inputSchool"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title" wx:if="{{isStudent}}">学号</view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{isStudent}}">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写完整学号" value="{{studentId}}" bindinput="inputStudentId"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">邮箱</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请使用QQ邮箱" value="{{email}}" bindinput="inputEmail"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">备注</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入个人简介" style="height: 3.3em" value="{{introduction}}" bindinput="inputIntroduction"/>
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">遇见使用问题请联系我们。</view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="saveSetting">确定</button>
+        </view>
+    </view>
+</view>

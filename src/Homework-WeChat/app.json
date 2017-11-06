@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/homework",
+
+    "pages/explore/explore",
+    "pages/explore/post",
+    "pages/explore/courses",
+    "pages/explore/schools",
+    "pages/explore/teachers",
+    "pages/explore/share",
+    "pages/explore/sponsors",
+
+    "pages/mine/mine",
+    "pages/mine/setting",
+    "pages/mine/role",
+    "pages/mine/courses",
+    "pages/mine/homeworks",
+    "pages/mine/students",
+    "pages/mine/teachers",
+    "pages/mine/aboutus",
+    "pages/mine/advice",
+    "pages/mine/sponsor",
+    
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#009444",
+    "navigationBarTitleText": "收发作业",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#009444",
+    "list": [
+      {
+        "iconPath": "pages/example/images/home64.png",
+        "selectedIconPath": "pages/example/images/home64_on.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "pages/example/images/explore64.png",
+        "selectedIconPath": "pages/example/images/explore64_on.png",
+        "pagePath": "pages/explore/explore",
+        "text": "发现"
+      },
+      {
+        "iconPath": "pages/example/images/user64.png",
+        "selectedIconPath": "pages/example/images/user64_on.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
