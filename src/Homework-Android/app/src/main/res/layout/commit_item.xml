@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="0dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="2dp"
+    android:background="@color/bg_White">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        android:src="@drawable/user" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_suj"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/userName"
+                android:text="maixianjun_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:id="@+id/lastMagTime"
+                style="@style/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:textSize="8sp"
+                android:text="早上11:30"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_002"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:layout_below="@+id/ll_suj">
+            <TextView
+                style="@style/text"
+                android:id="@+id/lastMagContext"
+                android:text="好的，一定准时完成！"
+                android:textSize="8sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="false" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

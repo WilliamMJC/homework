@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:background="@color/bg_White"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv_course"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Android移动应用开发"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textIsSelectable="false"/>
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_gravity="right"
+            android:id="@+id/tv_students"
+            android:text="学生人数:25"
+            android:textColor="@color/text_clo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="false" />
+        <TextView
+            android:id="@+id/tv_works"
+            android:layout_gravity="right"
+            android:text="作业次数:5"
+            android:textColor="@color/text_clo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="false" />
+    </LinearLayout>
+</LinearLayout>
