@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: homework
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ztcha
+Implementation-Vendor-Id: com.zt
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_171
+Main-Class: ${start-class}
+

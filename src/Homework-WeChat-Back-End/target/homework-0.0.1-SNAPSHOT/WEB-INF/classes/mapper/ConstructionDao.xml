@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.ConstructionDao">
+    <insert id="insertConstruction" parameterType="com.zt.homework.entity.Construction">
+        INSERT INTO
+        constrction (task_id, course_id, construction_name, download_time)
+        VALUES (#{taskId}, #{courseId}, #{constructionName}, #{downloadTime})
+    </insert>
+
+    <update id="updateConstruction">
+        UPDATE constrction
+        SET download_time=#{downloadTime}
+        WHERE course_id=#{courseId} AND task_id=#{taskId}
+    </update>
+
+    <select id="hasConstruction" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM constrction
+        WHERE task_id=#{taskId} AND course_id=#{courseId}
+    </select>
+</mapper>

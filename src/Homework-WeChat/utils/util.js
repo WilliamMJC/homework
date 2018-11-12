@@ -1,21 +1,25 @@
-function formatTime(date) {
-  var year = date.getFullYear()
-  var month = date.getMonth() + 1
-  var day = date.getDate()
-
-  var hour = date.getHours()
-  var minute = date.getMinutes()
-  var second = date.getSeconds()
-
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
+};
 
-function formatNumber(n) {
+const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
-}
+};
+
+const formatDate = ([year, month, day, hour, minue]) => {
+  let dateString = year + '-' + formatNumber(month) + '-' + formatNumber(day) + ' ' + formatNumber(hour) + ':' + formatNumber(minue);
+  return dateString;
+};
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatDate: formatDate
 }

@@ -1,0 +1,67 @@
+<view class="page">
+
+    <wux-select id="wux-select" />
+    <van-notify id="form-notify" />
+    <wux-toast id="wux-toast" />
+    <wux-dialog id="wux-dialog" />
+
+    <form bindsubmit="formSubmit">
+        <wux-cell-group title="设置作业信息">
+            <van-cell title="课程" value="{{currentCourse.courseName}}" bind:click="onCourseSelect" isLink />
+
+            <van-field 
+                name="taskName" 
+                value="{{taskName}}"
+                type="text" 
+                label="作业名" 
+                placeholder="请输入作业名" 
+                maxlength="20" 
+                border="{{ true }}" />
+
+            <zan-cell title="开始时间">
+                <zan-date-picker
+                    slot="footer"
+                    date="{{ startTime }}"
+                    not-use="{{['years', 'seconds']}}"
+                    bindchange="onStartTimeChange"  
+                    bindcancel="cancel"
+                    placeholder="请选择作业开始时间"
+                    format="YYYY-MM-DD HH:mm"
+                />
+            </zan-cell>
+        
+            <zan-cell title="结束时间">
+                <zan-date-picker
+                    slot="footer"
+                    date="{{ endTime }}"
+                    not-use="{{['years', 'seconds']}}"
+                    bindchange="onEndTimeChange"  
+                    bindcancel="cancel"
+                    placeholder="请选择作业结束时间"
+                    format="YYYY-MM-DD HH:mm"
+                    />
+             </zan-cell>
+
+            <van-field 
+                name="taskDesc" 
+                value="{{taskDesc}}" 
+                type="textarea" 
+                label="描述" 
+                placeholder="请输入作业描述" 
+                maxlength="200" 
+                autosize
+                border="{{ false }}" />
+        </wux-cell-group>
+
+        <wux-checkbox-group name="acceptFileType" value="{{acceptFileType}}" title="附件支持的文件类型" bind:change="onTypeChange">
+            <wux-checkbox color="positive" extra=".doc" value="1" />
+            <wux-checkbox color="positive" extra=".docx" value="2" />
+            <wux-checkbox color="positive" extra=".pdf" value="4" />
+            <wux-checkbox color="positive" extra="超大附件" value="8" />
+        </wux-checkbox-group>
+        
+        <view class="weui-btn-area">
+            <button class="wux-button--positive" hover-class="wux-button--hover" form-type="submit" loading="{{btnLoading}}" disabled="{{btnLoading}}">确定</button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.SummaryDao">
+    <insert id="insertSummary">
+        INSERT INTO
+        summary (course_id, summary_name, download_time)
+        VALUES (#{courseId}, #{summaryName}, #{downloadTime})
+    </insert>
+
+    <update id="updateSummary">
+        UPDATE summary
+        SET download_time=#{downloadTime}
+    </update>
+
+    <select id="hasSummary" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM summary
+        WHERE course_id=#{courseId}
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+{
+    "navigationBarTitleText": "发布作业",
+    "usingComponents": {
+        "zan-date-picker": "../../lib/zanui-weapp/datetime-picker/index",
+        "zan-cell": "../../lib/zanui-weapp/cell/index",
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "van-field": "../../lib/vant-weapp/field/index",
+        "van-notify": "../../lib/vant-weapp/notify/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-select": "../../lib/wux-weapp-master/select/index",
+        "van-cell": "../../lib/vant-weapp/cell/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-checkbox-group": "../../lib/wux-weapp-master/checkbox-group/index",
+        "wux-checkbox": "../../lib/wux-weapp-master/checkbox/index"
+    }
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.CourseMemberDao">
+    <insert id="insertCM" parameterType="com.zt.homework.entity.CourseMember">
+        INSERT INTO
+        course_member (course_id, user_id, personal_id, type, permission)
+        <trim prefix="values (" suffix=")">
+            #{courseId}, #{userId}, #{personalId}, #{type},
+            <if test="type == 'teacher'">4</if>
+            <if test="type == 'student'">0</if>
+        </trim>
+    </insert>
+
+    <select id="hasCM" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM course_member
+        WHERE course_id=#{courseId} AND user_id=#{userId}
+    </select>
+
+    <delete id="deleteCM">
+        DELETE FROM course_member
+        WHERE user_id=#{userId} AND course_id=#{courseId}
+    </delete>
+
+    <select id="queryPermissionByCM" resultType="java.lang.Integer">
+        SELECT permission
+        FROM course_member
+        WHERE course_id=#{courseId} AND user_id=#{userId}
+    </select>
+
+    <select id="queryCMByCourseId" resultType="com.zt.homework.entity.CourseMember">
+        SELECT *
+        FROM course_member
+        WHERE course_id=#{courseId}
+    </select>
+
+    <select id="queryStuCMByCourseId" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM course_member
+        WHERE course_id=#{courseId} AND type="student"
+    </select>
+
+    <select id="queryCMByCourseIdUserId" resultType="com.zt.homework.entity.CourseMember">
+        SELECT *
+        FROM course_member
+        WHERE course_id=#{courseId} AND user_id=#{userId}
+    </select>
+
+    <select id="queryPersonalIdByCourseId" resultType="java.lang.String">
+        SELECT personal_id
+        FROM course_member
+        WHERE course_id=#{courseId} AND type="student"
+    </select>
+
+    <select id="queryUserIdByCourseIdPersonalId" resultType="java.lang.Integer">
+        SELECT user_id
+        FROM course_member
+        WHERE course_id=#{courseId} AND personal_id=#{personalId}
+    </select>
+
+    <select id="queryCMByCourseIdWithPage" resultType="com.zt.homework.entity.CourseMember">
+        SELECT *
+        FROM course_member
+        WHERE course_id=#{courseId} AND type = "student"
+        ORDER BY personal_id ASC
+        LIMIT #{currIndex}, #{pageSize}
+    </select>
+
+    <select id="queryTeaByCourseId" resultType="com.zt.homework.entity.CourseMember">
+        SELECT *
+        FROM course_member
+        WHERE course_id=#{courseId} AND type="teacher"
+    </select>
+</mapper>

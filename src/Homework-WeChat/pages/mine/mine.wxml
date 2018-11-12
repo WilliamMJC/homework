@@ -1,93 +1,22 @@
-<!--mine.wxml-->
 <view class="page">
-
     <view class="page__bd">
-        <view class="weui-cells__title"></view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                    <image src="{{userInfo.avatarUrl}}" style="width: 50px; height: 50px; display: block"/>
-                    <!--view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">1</view-->
-                </view>
-                <view class="weui-cell__bd">
-                    <view>{{userInfo.nickName}}</view>
-                    <view style="font-size: 13px;color: #888888;">欢迎您！</view>
-                </view>
-            </view>
-        </view>
+        <wux-cell-group>
+            <wux-media align="flex-start" userAvatar="{{true}}" userNickName="{{true}}"></wux-media>
+        </wux-cell-group>
 
-        <view class="weui-cells__title" wx:if="{{roleName}}"></view>
-        <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/mine/courses" class="weui-cell weui-cell_access" wx:if="{{roleName}}">
-                <view class="weui-cell__bd">我的课程</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
-                    <view style="display: inline-block;vertical-align:middle; font-size: 17px;">1</view>
-                    <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
-                </view>
-            </navigator>
-            <navigator url="/pages/mine/homeworks" class="weui-cell weui-cell_access" wx:if="{{roleName}}">
-                <view class="weui-cell__bd">我的作业</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
-                    <view style="display: inline-block;vertical-align:middle; font-size: 17px;">2</view>
-                    <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
-                </view>
-            </navigator>
-            <navigator url="/pages/mine/students" class="weui-cell weui-cell_access" wx:if="{{roleName=='教师'}}">
-                <view class="weui-cell__bd">我的学生</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
-                    <view style="display: inline-block;vertical-align:middle; font-size: 17px;">50</view>
-                    <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
-                </view>
-            </navigator>
-            <navigator url="/pages/mine/teachers" class="weui-cell weui-cell_access" wx:if="{{roleName=='学生'}}">
-                <view class="weui-cell__bd">我的老师</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
-                    <view style="display: inline-block;vertical-align:middle; font-size: 17px;">50</view>
-                    <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
-                </view>
-            </navigator>
-        </view>
+        <wux-cell-group title="个人">
+            <wux-cell thumb="/images/setup_fill.png" title="设置个人信息" is-link url="/pages/mine/setting"></wux-cell>
+            <wux-cell thumb="/images/mail_fill.png" title="设置作业邮箱" is-link url="/pages/mine/setWorkMail"></wux-cell>
+        </wux-cell-group>
 
-        <view class="weui-cells__title"></view>
-        <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/mine/role" class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">
-                    <view style="display: inline-block; vertical-align: middle">身份</view>
-                </view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">{{roleName?roleName:'未设置'}}</view>
-            </navigator>
-            <navigator url="/pages/mine/setting" class="weui-cell weui-cell_access" wx:if="{{roleName}}">
-                <view class="weui-cell__bd">
-                    <view style="display: inline-block; vertical-align: middle">设置</view>
-                </view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">学校、邮箱</view>
-            </navigator>
-        </view>
+        <wux-cell-group title="通用">
+            <!-- <wux-cell thumb="/images/interactive_fill.png" title="反馈" is-link></wux-cell> -->
+            <wux-cell thumb="/images/feedback_fill.png" title="帮助" is-link url="/pages/mine/help"></wux-cell>
+        </wux-cell-group>
 
-        <view class="weui-cells__title"></view>
-        <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/mine/advice" class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">
-                    <view style="display: inline-block; vertical-align: middle">反馈</view>
-                </view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">Welcome</view>
-            </navigator>
-            <navigator url="/pages/mine/sponsor" class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">
-                    <view style="display: inline-block; vertical-align: middle">赞助</view>
-                </view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">Thank You</view>
-            </navigator>
-        </view>
-
-        <view class="weui-cells__title"></view>
-        <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/mine/aboutus" class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">
-                    <view style="display: inline-block; vertical-align: middle">小程序作者</view>
-                </view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">Scholarly</view>
-            </navigator>
-        </view>
+        <wux-cell-group title="关于" label="遇到使用问题请联系我们">
+            <wux-cell thumb="/images/barrage_fill.png" title="关于小程序" is-link url="/pages/mine/about"></wux-cell>
+            <!-- <wux-cell thumb="/images/group_fill.png" title="关于作者" is-link></wux-cell> -->
+        </wux-cell-group>
     </view>
 </view>

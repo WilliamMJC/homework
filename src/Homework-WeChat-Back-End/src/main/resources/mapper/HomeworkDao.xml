@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.HomeworkDao">
+    <insert id="insertHomework" parameterType="com.zt.homework.entity.Homework">
+        INSERT INTO
+        homework
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            task_id, course_id, user_id, sent_date,
+            <if test="fileName != null and fileName != ''">file_name,</if>
+            <if test="fileLink != null and fileLink != '' ">file_link</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{taskId}, #{courseId}, #{userId}, #{sentDate},
+            <if test="fileName != null and fileName != ''">#{fileName},</if>
+            <if test="fileLink != null and fileLink != '' ">#{fileLink}</if>
+        </trim>
+    </insert>
+
+    <select id="queryHomeworkByTaskIdCourseId" resultType="com.zt.homework.entity.Homework">
+        SELECT *
+        FROM homework
+        WHERE task_id=#{taskId} AND course_id=#{courseId}
+    </select>
+
+    <select id="queryHomework" resultType="com.zt.homework.entity.Homework">
+        SELECT *
+        FROM homework
+        WHERE task_id=#{taskId} AND user_id=#{userId} AND course_id=#{courseId}
+    </select>
+
+    <update id="updateHomework" parameterType="com.zt.homework.entity.Homework">
+        UPDATE homework
+        <set>
+            <if test="sentDate != null">sent_date=#{sentDate},</if>
+            <if test="fileName != null and fileName != ''">file_name=#{fileName},</if>
+            <if test="fileLink != null and fileLink != '' ">file_link=#{fileLink},</if>
+            <if test="score != null">score=#{score}</if>
+        </set>
+        WHERE task_id=#{taskId}  AND user_id=#{userId} AND course_id=#{courseId}
+    </update>
+
+    <select id="queryHomeworkByCourseIdUserId" resultType="com.zt.homework.entity.Homework">
+        SELECT *
+        FROM homework
+        WHERE course_id=#{courseId} AND user_id=#{userId}
+    </select>
+</mapper>

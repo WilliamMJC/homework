@@ -1,0 +1,43 @@
+<view class="page">
+
+    <wux-loading id="wux-loading" />
+    <wux-toast id="wux-toast" />
+    <wux-dialog id="wux-dialog" />
+
+    <view class="page__hd">
+        <view class="page__title">作业：{{endTask.taskName}}</view>
+        <view class="page__desc">开始时间：{{endTask.startTime}}</view>
+        <view class="page__desc">结束时间：{{endTask.endTime}}</view>
+    </view>
+
+    <view class="page__bd">
+        <canvas canvas-id="pieCanvas" class="canvas" style="height:300px"></canvas>
+
+        <wux-white-space size="default" />
+
+        <wux-accordion-group title="" defaultCurrent="">
+            <wux-accordion title="作业提交记录">
+                <wux-white-space size="default" />
+                <wux-steps direction="vertical">
+                    <block wx:for="{{endTask.homeworkDtoList}}" wx:key="{{index}}">
+                        <view class="wux-class wux-step wux-step--vertical {{item.sentDate===null?'wux-step--error':'wux-step--finish'}}"
+                            hover-class="wux-cell--hover" bindtap="onHomeworkTap" index="{{index}}" style="width: 100%;">
+                            <view class="wux-step__hd">
+                                <view class="wux-step__icon">{{ index + 1 }}</view>
+                            </view>
+                            <view class="wux-step__bd">
+                                <view class="wux-step__title">
+                                    {{ item.username }}
+                                </view>
+                                <view class="wux-step__content">
+                                    {{ item.sentDate===null?'未提交':item.sentDate }}
+                                </view>
+                            </view>
+                            <view class="wux-step__ft" wx:if="{{ index !== endTask.homeworkDtoList.length - 1 }}"></view>
+                        </view>
+                    </block>
+                </wux-steps>
+            </wux-accordion>
+        </wux-accordion-group>
+    </view>
+</view>

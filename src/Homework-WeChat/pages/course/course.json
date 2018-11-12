@@ -1,0 +1,24 @@
+{
+    "navigationBarTitleText": "课程主页",
+    "usingComponents": {
+        "van-tabbar": "../../lib/vant-weapp/tabbar/index",
+        "van-tabbar-item": "../../lib/vant-weapp/tabbar-item/index",
+        "wux-floating-button": "../../lib/wux-weapp-master/floating-button/index",
+        "wux-prompt": "../../lib/wux-weapp-master/prompt/index",
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "wux-cell": "../../lib/wux-weapp-master/cell/index",
+        "wux-media": "../../lib/wux-weapp-master/media/index",
+        "wux-switch": "../../lib/wux-weapp-master/switch/index",
+        "wux-white-space": "../../lib/wux-weapp-master/white-space/index",
+        "wux-icon": "../../lib/wux-weapp-master/icon/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-accordion-group": "../../lib/wux-weapp-master/accordion-group/index",
+        "wux-accordion": "../../lib/wux-weapp-master/accordion/index",
+        "wux-divider": "../../lib/wux-weapp-master/divider/index",
+        "wux-spin": "../../lib/wux-weapp-master/spin/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-actionsheet": "../../lib/wux-weapp-master/actionsheet/index",
+        "wux-loading": "../../lib/wux-weapp-master/loading/index"
+    }
+}

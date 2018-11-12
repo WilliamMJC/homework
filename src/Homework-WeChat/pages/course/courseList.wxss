@@ -1,0 +1,26 @@
+ .course_content {
+    display: flex;
+    align-items: center;
+}
+
+.course_content > image {
+    display: inline-block;
+    width: 50rpx;
+    height: 50rpx;
+    position: relative;
+    margin-right: 10rpx;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.course_content > text {
+    color: #888;
+}
+
+/* .page__bd {
+    padding-bottom: 20px;
+} */
+
+.weui-tab__content {
+    height: 100%;
+}

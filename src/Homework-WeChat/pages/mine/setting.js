@@ -1,76 +1,138 @@
-// pages/mine/setting.js
-Page({
-  data:{
-    role: '',
-    isStudent: false,
-    isTeacher: false
-  },
-  onLoad: function (options) {
-    var that = this;
-    // 从缓存取回身份设置
-    wx.getStorage({
-      key: 'role',
-      success: function (res) {
-        //console.log(res.data)
-        var role = res.data;
-        that.setData({
-          role: role,
-          isStudent: role === 'student',
-          isTeacher: role === 'teacher'
-        });
-      }
-    }) 
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
+import Api from '../../utils/api.js';
+import Notify from '../../lib/vant-weapp/notify/index.js';
+import { $wuxToast } from '../../lib/wux-weapp-master/index.js';
+import Promise from '../../lib/blurbird';
 
-  inputSchool:function(e) {
-    this.saveInput('school',e.detail.value);
-  },
-  inputStudentId: function (e) {
-    this.saveInput('studentId', e.detail.value);
-  },
-  inputEmail: function (e) {
-    this.saveInput('email', e.detail.value);
-  },
-  inputIntroduction: function (e) {
-    this.saveInput('introduction', e.detail.value);
-  },
-  saveInput : function(name, value) {
-    var that = this;
-    that.data[name]=value;
-  },
-  saveSetting:function(e) {
-    var that = this;
-    //console.dir(that.data)
-    // 保存到缓存中
-    var setting = {
-      school: that.data.school,
-      email: that.data.email,
-      studentId: that.data.studentId,
-      introduction: that.data.introduction
-    };
-    wx.setStorage({
-      key: "setting",
-      data: setting,
-      success: function () {
-        // TODO 发送到服务器
-        wx.showToast({
-          title: '保存成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    });
-  }
+Page({
+    data: {
+        /* 表单内容 */
+        username: '',
+        personalId: '',
+        personalMail: '',
+        school: '惠州学院',
+
+        btnLoading: false,
+        spinning: false,
+    },
+
+    onLoad() {
+        this.getUserInfo();
+    },
+
+    /**
+     * 获取用户信息
+     *
+     */
+    getUserInfo() {
+        Api.getUserInfo()
+            .then(res => {
+                if (res.code !== 0) {
+                    return Promise.reject(res);
+                } else {
+                    this.setData({
+                        username: res.data.username,
+                        personalId: res.data.personalId,
+                        personalMail: res.data.personalMail,
+                    });
+
+                    if(res.data.school !== null && res.data.school !== '') {
+                        this.setData({ school: res.data.school });
+                    }
+                    // /* spin组件bug 需要设置延时才能正常消失 */
+                    // setTimeout(() => {
+                    //     this.setData({ spinning: false });
+                    // }, 100);
+                }
+            })
+            .catch(res => {
+                this.setData({ spinning: false });
+                console.error(res.msg);
+                $wuxToast().show({
+                    type: 'cancel',
+                    duration: 1000,
+                    color: '#fff',
+                    text: res.msg
+                })
+            })
+    },
+
+    /* 事件处理函数 */
+
+    /**
+     * 表单提交
+     *
+     * @param {*} { detail: { value } }
+     */
+    formSubmit({ detail: { value } }) {
+        let username = value.username,
+            personalId = value.personalId,
+            personalMail = value.personalMail,
+            school = value.school;
+
+        this.setData({ btnLoading: true });
+
+        /* 输入校验 */
+        if (username === '' || personalId === '' || personalMail === '') {
+            Notify({
+                text: '必填项不能为空',
+                duration: 1000,
+                selector: '#form-notify',
+                backgroundColor: '#ed3f14'
+            });
+            this.setData({ btnLoading: false });
+        } else if (!personalId.match(/\d+/i)) {
+            Notify({
+                text: '学号/工号须为数字',
+                duration: 1000,
+                selector: '#form-notify',
+                backgroundColor: '#ed3f14'
+            });
+            this.setData({ btnLoading: false });
+        } else if (!personalMail.match(/\w@qq|163|126.com/i)) {
+            Notify({
+                text: '只支持QQ/网易邮箱',
+                duration: 1000,
+                selector: '#form-notify',
+                backgroundColor: '#ed3f14'
+            });
+            this.setData({ btnLoading: false });
+        } else {
+            /* 发起请求 */
+            Api.updateUserInfo(value)
+                .then(res => {
+                    if (res.code !== 0) {
+                        return Promise.reject(res);
+                    } else {
+                        this.setData({
+                            username: res.data.username,
+                            personalId: res.data.personalId,
+                            personalMail: res.data.personalMail,
+                            school: res.data.school,
+                        })
+
+                        this.setData({ btnLoading: false });
+                        Notify({
+                            text: '信息更新成功',
+                            duration: 1000,
+                            selector: '#form-notify',
+                            backgroundColor: '#19be6b'
+                        });
+
+                        /* 将成功设置个人信息写入缓存 */
+                        wx.setStorageSync('setting', true);
+                    }
+                })
+                .catch(res => {
+                    console.error(res);
+                    if (res.msg) {
+                        $wuxToast().show({
+                            type: 'cancel',
+                            duration: 1000,
+                            color: '#fff',
+                            text: res.msg
+                        });
+                    }
+                });
+        }
+    }
 })

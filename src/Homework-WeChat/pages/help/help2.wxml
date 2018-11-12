@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="weui-article">
+        <view class="weui-article__h1">什么是免费邮箱客户端授权码功能？</view>
+        <view class="weui-article__section">
+            <view class="weui-article__title">1、什么是授权码？</view>
+            <view class="weui-article__section">
+                <!-- <view class="weui-article__h3">1.1 节标题</view> -->
+                <view class="weui-article__p" style="word-break: break-all;">
+                    邮箱客户端授权码是为了避免您的邮箱密码被盗后，盗号者通过客户端登录邮箱而独特设计的安防功能。
+
+                    您可以针对邮箱客户端设置唯一随机授权码，使用此授权码代替邮箱密码登录 邮箱。
+
+                    授权码具有随机性、高复杂性和不易泄露的特点。同时您可以在邮箱中方便的管理授权码， 如有安全隐患可快速采取措施。
+                </view>
+            </view>
+        </view>
+        <view class="weui-article__section">
+            <view class="weui-article__title">2、怎么获取授权码？</view>
+            <view class="weui-article__section">
+                <view class="weui-article__p">
+                    请在网页端登录邮箱后，进入 设置—>邮箱设置—>客户端授权密码 设置页面 ，如下图：
+                    进入授权密码设置页面后，可以看到开启授权密码服务选项—>点击“开启”：
+                </view>
+                <view class="weui-article__p">
+                    <image class="weui-article__img" src="/images/help/help2-1.jpg" mode="aspectFit" style="height: 180px" />
+                </view>
+                <view class="weui-article__h3">2.1 验证密保</view>
+                <view class="weui-article__p">
+                    <view class="weui-article__p">
+                        点击“开启”授权码后：首先需要通过手机（安全手机）验证：
+                    </view>
+                    <image class="weui-article__img" src="/images/help/help2-2.jpg" mode="aspectFit" style="height: 180px" />
+                </view>
+                <view class="weui-article__h3">2.2 编辑授权密码</view>
+                <view class="weui-article__p">
+                    手机验证通过后，您可以自定义编辑授权密码，必须字母+数字组合，如下图：
+                </view>
+                <view class="weui-article__p">
+                    <image class="weui-article__img" src="/images/help/help2-3.jpg" mode="aspectFit" style="height: 180px" />
+                </view>
+                <view class="weui-article__h3">2.3 确认</view>
+                <view class="weui-article__p">
+                    点击确认后将在此页面显示授权密码列表：
+                </view>
+                <view class="weui-article__p">
+                    <image class="weui-article__img" src="/images/help/help2-4.jpg" mode="aspectFit" style="height: 180px" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

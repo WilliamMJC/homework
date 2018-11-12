@@ -1,0 +1,31 @@
+<view class="page">
+
+    <wux-dialog id="wux-dialog" />
+
+    <view class="wux-speed-dial wux-speed-dial--bottomRight" bindtap="onAddButtonTap">
+        <view class="wux-speed-dial__action wux-speed-dial--positive" hover-class="wux-speed-dial__action--hover">
+            <image src="/images/add.png" style="height: 60rpx; width: 60rpx"></image>
+        </view>
+    </view>
+
+    <wux-prompt visible="{{ isTaskListEmpty }}" title="空空如也" text="作业列表为空，点击+发布一个作业吧" />
+
+    <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
+        <view class="page__bd">
+            <wux-cell-group>
+                <block wx:for="{{taskList}}" wx:key="{{index}}">
+                    <wux-media 
+                        thumb="/images/{{item.isTaskEnd?'end':(item.receive === item.total && item.total !== 0)?'success':'time'}}.png" 
+                        title="{{item.taskName}}({{item.receive}} | {{item.total}})"
+                        label="{{item.startTime}} - {{item.endTime}}" 
+                        isLink 
+                        url="{{item.isTaskEnd?'/pages/task/endTask?courseId=' + item.courseId + '&taskId=' + item.taskId : '/pages/task/task?courseId=' + item.courseId + '&taskId=' + item.taskId + '&size=' + item.receive}}"
+                        >
+                    </wux-media>
+                    <view class="divider" wx:if="{{index !== tasklist.length-1}}"></view>
+                </block>
+            </wux-cell-group>
+        </view>
+    </wux-spin>
+
+</view>

@@ -1,0 +1,69 @@
+<view class="page">
+
+    <wux-loading id="wux-loading" />
+    <wux-toast id="wux-toast" />
+    <wux-dialog id="wux-dialog" />
+
+
+    <view class="page__hd">
+        <view class="page__title">作业：{{task.taskName}}</view>
+        <!-- <view class="page__desc" wx-if="{{task.isStudent}}">邮件主题：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view>
+        <view class="page__desc" wx-if="{{task.isStudent}}">附件命名：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view> -->
+        <view class="page__desc">开始时间：{{task.startTime}}</view>
+        <view class="page__desc">结束时间：{{task.endTime}}</view>
+        <view class="page__desc">接受的文件类型：{{acceptFileType}}</view>
+    </view>
+
+    <wux-white-space size="default" />
+
+    <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
+        <view class="page__bd">
+            <wux-card full="{{ true }}" title="作业要求">
+                <view slot="body">
+                    {{(task.taskDesc === null || task.taskDesc === '') ? '无' : task.taskDesc}}
+                </view>
+                <view slot="footer" wx-if="{{task.isStudent}}">邮件主题&附件命名：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view>
+            </wux-card>
+
+            <wux-white-space size="default" />
+
+            <wux-accordion-group title="" defaultCurrent="" wx:if="{{ true }}">
+                <wux-accordion title="作业提交数({{size}} | {{task.total}})">
+                    <wux-white-space size="default" />
+                    <wux-steps direction="vertical">
+                        <block wx:for="{{task.receive}}" wx:key="{{index}}">
+                            <view class="wux-class wux-step wux-step--vertical wux-step--finish" hover-class="wux-cell--hover" bindtap="onHomeworkTap" index="{{index}}" style="width: 100%;">
+                                <view class="wux-step__hd">
+                                    <view class="wux-step__icon">{{ index + 1 }}</view>
+                                </view>
+                                <view class="wux-step__bd">
+                                    <view class="wux-step__title">
+                                        {{ item.username }}
+                                    </view>
+                                    <view class="wux-step__content">
+                                        {{ item.sentDate }}
+                                    </view>
+                                </view>
+                                <view class="wux-step__ft" wx:if="{{ index !== task.receive.length - 1 }}"></view>
+                            </view>
+                        </block>
+                    </wux-steps>
+                </wux-accordion>
+            </wux-accordion-group>
+
+            <view class="weui-btn-area">
+                <wux-button block type="positive" bind:click="onUpdateTap">更新</wux-button>
+            </view>
+            <view class="weui-btn-area">
+                <wux-button block type="positive" openType="share">转发</wux-button>
+            </view>
+            <view wx:if="{{task.isTeacher}}" class="weui-btn-area">
+                <wux-button block type="positive" bind:click="onGetHomeworkTap">收取作业</wux-button>
+            </view>
+            <view wx:if="{{task.isTeacher}}" class="weui-btn-area">
+                <wux-button block type="assertive"  bind:click="onEndTap">结束作业</wux-button>
+            </view>
+        </view>
+    </wux-spin>
+
+</view>

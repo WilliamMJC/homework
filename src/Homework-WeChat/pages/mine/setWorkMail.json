@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "设置作业邮箱",
+    "usingComponents": {
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "van-field": "../../lib/vant-weapp/field/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "van-notify": "../../lib/vant-weapp/notify/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-spin": "../../lib/wux-weapp-master/spin/index"
+    }
+}

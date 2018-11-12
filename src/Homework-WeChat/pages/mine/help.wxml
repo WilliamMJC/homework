@@ -1,0 +1,7 @@
+<view class="page">
+    <wux-cell-group title="帮助列表">
+        <wux-cell title="如何获取qq邮箱授权码" isLink url="/pages/help/help1"></wux-cell>
+        <wux-cell title="如何获取网易邮箱授权码" isLink url="/pages/help/help2"></wux-cell>
+        <wux-cell title="如何配置非公开的课程" isLink url="/pages/help/help3"></wux-cell>
+    </wux-cell-group>
+</view>

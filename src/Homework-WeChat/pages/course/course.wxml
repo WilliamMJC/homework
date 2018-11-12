@@ -1,0 +1,153 @@
+<view class="page">
+
+    <wux-dialog id="wux-dialog" />
+    <wux-toast id="wux-toast" />
+    <wux-actionsheet id="wux-actionsheet" />
+    <wux-loading id="wux-loading" />
+
+    <wux-floating-button id="wux-floating-button" visible="{{ actionVisible }}" backdrop="{{true}}" theme="positive"
+        buttons="{{ actions }}" hidden="{{ isCourseEnd || floatButtonHidden }}" position="withTabBarBottomRight"
+        bind:click="actionButtonTap" style="margin-bottom: 132rpx" />
+
+    <!-- <wux-prompt visible="{{ (resourceList.length === 0) && currentTab === 0 }}" title="空空如也" text="{{isTeacher?'资源列表为空，点击按钮查看如何发布资源':'老师还未发布任何资源'}}"
+        buttons="{{isTeacher?resourcePromptButtons:null}}" /> -->
+    <wux-prompt visible="{{ (isTaskListEmpty) && currentTab === 1 }}" title="空空如也" text="{{isTeacher?'作业列表为空，点击+发布一个作业':'没有未结束的作业'}}" />
+
+    <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
+        <view class="page__bd">
+
+            <!-- 资源 -->
+            <!-- <view class="weui-tab__content" wx:if="{{ false }}">
+                <wux-cell-group>
+                    <block wx:for="{{resourceList}}" wx:key="{{index}}">
+                        <wux-media thumb="/images/Word.png" title="{{item.resourceName}}" label="{{item.uploadTime}}发布 {{item.resourceSize}}"
+                            isLink="{{true}}"></wux-media>
+
+                        <view class="divider" wx:if="{{index !== resourceList.length-1}}"></view>
+                    </block>
+                </wux-cell-group>
+            </view> -->
+
+            <!-- 作业 -->
+            <view class="weui-tab__content" wx:if="{{ currentTab === 1 }}">
+                <wux-cell-group>
+                    <block wx:for="{{taskList}}" wx:key="{{index}}">
+                        <wux-media thumb="/images/{{item.isTaskEnd?'end':(item.receive === stuList.length && stuList.length !== 0)?'success':'time'}}.png"
+                            title="{{item.taskName}}({{item.receive}} | {{stuLength}})" label="{{item.startTime}} - {{item.endTime}}"
+                            isLink url="{{item.isTaskEnd?'/pages/task/endTask?courseId=' + item.courseId + '&taskId=' + item.taskId : '/pages/task/task?courseId=' + item.courseId + '&taskId=' + item.taskId + '&size=' + item.receive}}">
+                        </wux-media>
+                        <view class="divider" wx:if="{{index !== tasklist.length-1}}"></view>
+                    </block>
+
+                </wux-cell-group>
+            </view>
+
+            <!-- 成员 -->
+            <view class="weui-tab__content" hidden="{{ currentTab !== 2 }}">
+                <wux-cell-group title="任课老师">
+                    <wux-cell thumb="/images/questions.png" title="{{teacher.username}}" isLink url="{{'/pages/course/info?isTeacher=' + true + '&courseId=' + courseId + '&userId=' + teacher.userId + '&total=' + taskList.length}}"></wux-cell>
+                </wux-cell-group>
+
+                <wux-white-space size="default" />
+
+                <wux-cell-group title="学生列表:{{stuLength}}人">
+                    <wux-prompt visible="{{ (stuList.length === 0) && currentTab === 2 }}" title="空空如也" text="学生列表为空，点击按钮转发课程让学生加入"
+                        buttons="{{memberPromptButtons}}" />
+                    <block wx:for="{{stuList}}" wx:key="{{index}}">
+                        <navigator class="wux-class wux-cell wux-cell--access {{index===(stuList.length - 1) ? 'wux-cell--last' : ''}}" hover-class="wux-cell--hover" url="{{'/pages/course/info?isTeacher=' + false + '&courseId=' + courseId + '&userId=' + item.userId + '&total=' + taskList.length}}">
+                            <view class="wux-cell__hd">
+                            </view>
+                            <view class="wux-cell__bd">
+                                <view class="wux-cell__text">{{ item.username }}</view>
+                                <view class="wux-cell__desc">{{ item.personalId }}</view>
+                            </view>
+                            <view class="wux-cell__ft">
+                            </view>
+                        </navigator>
+                    </block>
+                </wux-cell-group>
+
+                <wux-divider hidden="{{loadmore}}">
+                    <view class="loadmore">
+                        <view class="loading"></view>
+                        <text class="text">正在加载</text>
+                    </view>
+                </wux-divider>
+
+                <wux-divider hidden="{{stuListEnd}}" text="没有更多学生" />
+            </view>
+
+            <!-- 详情 -->
+            <view class="weui-tab__content" wx:if="{{ currentTab === 0 }}">
+                <wux-cell-group>
+                    <wux-media thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="{{courseName}}" label="{{courseDesc}}"></wux-media>
+                </wux-cell-group>
+
+                <wux-white-space size="default" />
+
+                <wux-cell-group>
+                    <wux-cell title="课程号" extra="{{courseId}}" label="点击可复制" bind:click="onCourseCodeCellClick"></wux-cell>
+                    <wux-cell title="课程是否公开">
+                        <wux-switch name="isPublic" slot="footer" color="positive" value="{{ isPublic }}" disabled="{{true}}" />
+                    </wux-cell>
+                </wux-cell-group>
+
+                <wux-white-space size="default" />
+
+                <wux-accordion-group title="" defaultCurrent="" wx:if="{{ isTeacher && stuIdList.length !== 0 }}">
+                    <wux-accordion title="允许加入的学号列表：" content="点击可进行修改">
+                        <wux-cell-group>
+                            <block wx:for="{{stuIdList}}" wx:key="{{index}}">
+                                <view class="wux-class wux-cell wux-cell--access {{index===(stuList.length - 1) ? 'wux-cell--last' : ''}}" hover-class="wux-cell--hover" bindtap="onStuIdCellTap" data-index="{{index}}">
+                                    <view class="wux-cell__hd">
+                                    </view>
+                                    <view class="wux-cell__bd">
+                                        <view class="wux-cell__text">{{ item }}</view>
+                                    </view>
+                                    <view class="wux-cell__ft">
+                                    </view>
+                                </view>
+                            </block>
+                        </wux-cell-group>
+                    </wux-accordion>
+                </wux-accordion-group>
+
+                <view wx:if="{{isTeacher && !isCourseEnd}}" class="weui-btn-area">
+                    <wux-button block type="positive" bind:click="onEndCourseTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">结束课程</wux-button>
+                </view>
+
+                <view wx:if="{{isTeacher && isCourseEnd}}" class="weui-btn-area">
+                    <wux-button block type="assertive" bind:click="onDeleteCourseTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">删除课程</wux-button>
+                </view>
+
+                <view wx:if="{{isStudent}}" class="weui-btn-area">
+                    <wux-button block type="assertive" bind:click="onQuitCourseTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">退出课程</wux-button>
+                </view>
+            </view>
+        </view>
+    </wux-spin>
+
+
+    <van-tabbar active="{{ currentTab }}" bind:change="onTabChange">
+        <!-- <van-tabbar-item>
+            <span>资源</span>
+            <image slot="icon" src="/images/document.png" class="icon" mode="aspectFit" />
+            <image slot="icon-active" src="/images/document_fill.png" mode="aspectFit" />
+        </van-tabbar-item> -->
+        <van-tabbar-item>
+            <span>课程</span>
+            <image slot="icon" src="/images/manage.png" class="icon" mode="aspectFit" />
+            <image slot="icon-active" src="/images/manage_fill.png" mode="aspectFit" />
+        </van-tabbar-item>
+        <van-tabbar-item>
+            <span>作业</span>
+            <image slot="icon" src="/images/tasklist.png" class="icon" mode="aspectFit" />
+            <image slot="icon-active" src="/images/tasklist_fill.png" mode="aspectFit" />
+        </van-tabbar-item>
+        <van-tabbar-item>
+            <span>成员</span>
+            <image slot="icon" src="/images/group.png" class="icon" mode="aspectFit" />
+            <image slot="icon-active" src="/images/group_fill.png" mode="aspectFit" />
+        </van-tabbar-item>
+    </van-tabbar>
+</view>

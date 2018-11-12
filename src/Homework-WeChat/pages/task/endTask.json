@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "作业统计",
+    "usingComponents": {
+        "wux-white-space": "../../lib/wux-weapp-master/white-space/index",
+        "wux-accordion-group": "../../lib/wux-weapp-master/accordion-group/index",
+        "wux-accordion": "../../lib/wux-weapp-master/accordion/index",
+        "wux-steps": "../../lib/wux-weapp-master/steps/index",
+        "wux-step": "../../lib/wux-weapp-master/step/index",
+        "wux-loading": "../../lib/wux-weapp-master/loading/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index"
+    }
+}
