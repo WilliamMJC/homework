@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:background="#EEEEEE"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        toolbar:titleTextColor="@android:color/white"
+        toolbar:subtitleTextColor="@android:color/white"
+        toolbar:popupTheme="@style/ToolbarPopupTheme">
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.RecyclerView
+        android:scrollbars="vertical"
+        android:id="@+id/recylerViewMsg"
+        android:layout_width="match_parent"
+        android:layout_weight="1.0"
+        android:layout_height="match_parent" />
+    <View style="@style/bg_line"
+        android:layout_marginTop="5dp"/>
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12sp"
+            android:layout_weight="5"
+            android:background="@drawable/et_normal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivFace"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/new_emotion_white" />
+
+            <com.rockerhieu.emojicon.EmojiconEditText
+                android:id="@+id/etContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ivFace"
+                android:background="@null"
+                android:maxLength="500"
+                android:maxLines="4"
+                android:textSize="14sp" />
+            <!--<EditText
+                 android:textColor="?text_color"
+                android:textColorHint="?text_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />-->
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sendMsg"
+            style="@style/mButton"
+            android:background="@drawable/button"
+            android:enabled="false"
+            android:layout_width="0dp"
+            android:layout_marginLeft="6dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="12sp"
+            android:layout_weight="1"
+            android:text="发送" />
+        <FrameLayout
+            android:id="@+id/emojicons"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

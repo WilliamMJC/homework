@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_sendwork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        toolbar:titleTextColor="@android:color/white"
+        toolbar:subtitleTextColor="@android:color/white"
+        toolbar:popupTheme="@style/ToolbarPopupTheme">
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp"
+        android:orientation="vertical"
+        android:id="@+id/swiperefreshlayout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="100dp"
+                    android:text="选择课程"
+                    android:background="@null"
+                    android:textSize="16sp"
+                    android:layout_height="40dp"
+                    android:inputType="textEmailSubject" />
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/nice_spinner"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/LL1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="100dp"
+                    android:text="作业标题"
+                    android:textSize="16sp"
+                    android:background="@null"
+                    android:layout_height="40dp"
+                    android:inputType="textEmailSubject" />
+                <EditText
+                    android:id="@+id/et_mailsubject"
+                    android:hint=""
+                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:background="@null"
+                    android:layout_height="40dp"
+                    android:inputType="textEmailSubject" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="1.0px"
+                android:layout_marginRight="1.0px"
+                android:background="#ffc0c3c4" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_mailcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@null"
+                    android:enabled="true"
+                    android:minLines="8"
+                    android:maxLines="10"
+                    android:scrollbars="vertical"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="添加作业要求"
+                    android:inputType="textMultiLine" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0px"
+                    android:layout_marginLeft="1.0px"
+                    android:layout_marginRight="1.0px"
+                    android:background="#ffc0c3c4" />
+                <Button
+                    android:id="@+id/btn_sent"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="19sp"
+                    android:textColor="@color/bg_White"
+                    android:background="@color/blue"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="发布作业" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bnt_11"
+            android:layout_below="@id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="15dp"
+            android:textSize="19sp"
+            android:textColor="@color/bg_White"
+            android:background="@color/blue"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="发布作业" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

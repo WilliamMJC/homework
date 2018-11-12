@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false">
+     <diskStore path="c:/mycache"/>
+
+
+        <cache name="com.pindao.model.User"
+               maxElementsInMemory="500"
+               eternal="true"
+               timeToIdleSeconds="0"
+               timeToLiveSeconds="0"
+               overflowToDisk="false"/>
+        <cache name="findByCategoryId"
+               maxElementsInMemory="1"
+               eternal="true"
+               timeToIdleSeconds="0"
+               timeToLiveSeconds="0"
+               overflowToDisk="false"/>
+        <cache name="findByAttrId"
+               maxElementsInMemory="1"
+               eternal="true"
+               timeToIdleSeconds="0"
+               timeToLiveSeconds="0"
+               overflowToDisk="false" />
+        <defaultCache
+                maxElementsInMemory="10000"
+                eternal="false"
+                timeToIdleSeconds="120"
+                timeToLiveSeconds="120"
+                overflowToDisk="true"
+                maxElementsOnDisk="10000000"
+                diskPersistent="false"
+                diskExpiryThreadIntervalSeconds="120"
+                memoryStoreEvictionPolicy="LRU"
+                />
+</ehcache>

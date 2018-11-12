@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byType">
+
+	<!-- 启动注解 -->
+	<mvc:annotation-driven /> 
+	<!-- 扫描包 -->
+	<!-- 扫描包 -->
+ 	<!-- 开启controller注解支持 -->
+	<context:component-scan base-package="com.hzu.homework" use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!--jsp页面路径-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<mvc:interceptors>  
+	    <mvc:interceptor>  
+	        <mvc:mapping path="/api/*" />
+	        <mvc:exclude-mapping path="/api/user/register" />  
+	        <mvc:exclude-mapping path="/api/user/login" />
+	        <mvc:exclude-mapping path="/api/course/addCourse" />
+	        <mvc:exclude-mapping path="/api/user/getUserInfo" />
+	        <bean class="com.hzu.homework.app.interceptor.APIInterceptor" />  
+	    </mvc:interceptor>  
+	</mvc:interceptors>
+	
+	<bean id="taskExecutor"  
+        class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">  
+        <!-- 核心线程数 -->  
+        <property name="corePoolSize" value="3" />  
+        <!-- 最大线程数 -->  
+        <property name="maxPoolSize" value="10" />  
+        <!-- 队列最大长度 >=mainExecutor.maxSize -->  
+        <property name="queueCapacity" value="25" />  
+        <!-- 线程池维护线程所允许的空闲时间 -->  
+        <property name="keepAliveSeconds" value="300" />  
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略 ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃.  -->  
+        <property name="rejectedExecutionHandler">  
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />  
+        </property>  
+    </bean>  
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 
+		p:maxUploadSize="50000000"></bean>
+	<!-- 加载资源文件 -->	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">  
+        <property name="location">  
+        <value>classpath:/application.properties</value>  
+        </property>  
+    </bean>  
+	<!-- 静态资源配置 -->
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/"></mvc:resources>
+</beans>

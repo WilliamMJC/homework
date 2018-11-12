@@ -1,0 +1,264 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        toolbar:titleTextColor="@android:color/white"
+        toolbar:subtitleTextColor="@android:color/white"
+        toolbar:popupTheme="@style/ToolbarPopupTheme">
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:padding="0dp"
+        android:layout_weight="1.0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/ll_1"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bg_White"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:layout_height="35dp"
+                android:textColor="#000000"
+                android:text="作业:"/>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_height="35dp"
+                android:textSize="20sp"
+                android:text="Android-2:过程建模"
+                android:textColor="#000000" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程:  "/>
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UML与可视化建模"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="0dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/likeImg"
+                android:focusable="true"
+                android:clickable="true"
+                android:gravity="right"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_unlike" />
+            <TextView
+                android:id="@+id/likeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25"/>
+        </LinearLayout>
+        <View style="@style/bg_line"
+            android:layout_marginTop="5dp"/>
+        <LinearLayout
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="作业要求:"
+                android:textIsSelectable="true" />
+            <View style="@style/bg_line"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="无。"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/ll_submit_state"
+            android:paddingTop="5dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="你的作业提交状态:"
+                android:textIsSelectable="true" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_submit_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="未提交"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/ll_commit"
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="评论:"
+                android:textIsSelectable="true" />
+            <View style="@style/bg_line"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tv_noData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="暂无评论"/>
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/recylerViewMsg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerviewComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+        </LinearLayout>
+        <View style="@style/bg_line"/>
+        <LinearLayout
+            android:id="@+id/ll_tubiao"
+            android:paddingTop="5dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="图表分析:"
+                android:textIsSelectable="true" />
+            <View style="@style/bg_line"
+                android:layout_marginTop="5dp"/>
+            <com.github.mikephil.charting.charts.PieChart
+                android:padding="0dp"
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_weight="1">
+            </com.github.mikephil.charting.charts.PieChart>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/pieChart"
+                android:id="@+id/legendLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_receive_work"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="20dp"
+            android:textSize="19sp"
+            android:textColor="@color/bg_White"
+            android:background="@drawable/bt_shape"
+            android:visibility="gone"
+            android:text="收取作业" />
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12sp"
+            android:layout_weight="5"
+            android:background="@drawable/et_normal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivFace"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/new_emotion_white" />
+
+            <com.rockerhieu.emojicon.EmojiconEditText
+                android:id="@+id/etContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ivFace"
+                android:background="@null"
+                android:hint="回应..."
+                android:maxLength="500"
+                android:maxLines="4"
+                android:textSize="14sp" />
+            <!--<EditText
+                 android:textColor="?text_color"
+                android:textColorHint="?text_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />-->
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sendMsg"
+            style="@style/mButton"
+            android:background="@drawable/button"
+            android:enabled="false"
+            android:layout_width="0dp"
+            android:layout_marginLeft="6dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="12sp"
+            android:layout_weight="1"
+            android:text="发送" />
+        <FrameLayout
+            android:id="@+id/emojicons"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:visibility="gone" />
+    </LinearLayout>
+    <!--<include
+        android:id="@+id/viewDiv"
+        layout="@layout/activity_comment" />-->
+
+</LinearLayout>

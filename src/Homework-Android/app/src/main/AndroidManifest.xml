@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hzu.feirty.HomeWork">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 存储器写入权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 挂载文件系统权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.hzu.feirty.HomeWork.activity.index.MailApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:label"
+        android:label="收发作业"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.hzu.feirty.HomeWork.activity.index.LoginActivity">
+
+        </activity>
+        <activity
+            android:name="com.hzu.feirty.HomeWork.activity.MainActivityDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.funcation.SendWorkActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.ItemContentActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.index.RegisterActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.TeacherSetActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserInfoActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserNameUpdateActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserEmailUpdateActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserEmialPwdUpdateActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserSchoolUpdateActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.UserNoUpdateActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.StudentSetActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.SetActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.funcation.AllCourseActivity"/>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.funcation.AllSchoolActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mission.WorkContentActivity"/>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.CourseActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.SchoolActivity"/>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.TeacherActivity"/>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.TaskActivity" />
+        <activity android:name="com.hzu.feirty.HomeWork.activity.funcation.SendCourseActivity"/>
+        <activity android:name="com.hzu.feirty.HomeWork.activity.mycenter.WorkActivity" />
+        <activity android:name=".activity.mycenter.StudentActivity" />
+        <activity android:name=".activity.mycenter.StudentTableActivity" />
+        <activity android:name=".activity.mycenter.CourseToWorkedActivity"/>
+        <activity android:name=".activity.mycenter.ConstructionWorkedActivity" />
+        <activity android:name=".activity.index.ForgotPasswordActivity"/>
+        <activity android:name=".activity.index.ResetPwdActivity" />
+        <activity android:name=".activity.index.AboutActivity"/>
+        <activity android:name=".activity.information.ChatActivity"/>
+        <activity android:name=".activity.mission.ChatTeaActivity"/>
+    </application>
+</manifest>

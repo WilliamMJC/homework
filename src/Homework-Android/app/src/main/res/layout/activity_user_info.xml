@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        toolbar:titleTextColor="@android:color/white"
+        toolbar:subtitleTextColor="@android:color/white"
+        toolbar:popupTheme="@style/ToolbarPopupTheme">
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout style="@style/wrap_layout">
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View style="@style/bg_line"/>
+            <LinearLayout
+                android:id="@+id/ll_userName"
+                style="@style/mid_layout">
+                <TextView
+                    style="@style/usertext"
+                    android:layout_marginLeft="5dp"
+                    android:text="名字" />
+                <TextView
+                    android:id="@+id/loginName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:maxLength="60"
+                    android:text="feirty" />
+                <ImageView style="@style/img_arrow"/>
+            </LinearLayout>
+            <View style="@style/bg_line"/>
+            <LinearLayout
+                style="@style/mid_layout"
+                android:id="@+id/ll_schoolName">
+                <TextView style="@style/usertext"
+                    android:layout_marginLeft="5dp"
+                    android:text="学校" />
+                <TextView
+                    android:id="@+id/schoolName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:maxLength="60"
+                    android:text="惠州学院" />
+                <ImageView style="@style/img_arrow"/>
+            </LinearLayout>
+            <View style="@style/bg_line"/>
+            <LinearLayout
+                android:id="@+id/ll_tea_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <LinearLayout
+                    style="@style/mid_layout"
+                    android:id="@+id/ll_emailName">
+                    <TextView style="@style/usertext"
+                        android:layout_marginLeft="5dp"
+                        android:text="作业邮箱" />
+                    <TextView
+                        android:id="@+id/emailName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:maxLength="60"
+                        android:text="1050416617@qq.com" />
+                    <ImageView style="@style/img_arrow"/>
+                </LinearLayout>
+                <View style="@style/bg_line"/>
+                <LinearLayout
+                    style="@style/mid_layout"
+                    android:id="@+id/ll_emailPwd">
+
+                    <TextView style="@style/usertext"
+                        android:layout_marginLeft="5dp"
+                        android:text="邮箱授权码" />
+                    <TextView
+                        android:id="@+id/emailPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:maxLength="60"
+                        android:text="pgyausufphvbjeee" />
+                    <ImageView style="@style/img_arrow"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_stu_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <View style="@style/bg_line"/>
+                <LinearLayout
+                    style="@style/mid_layout"
+                    android:id="@+id/ll_studentNo">
+
+                    <TextView style="@style/usertext"
+                        android:layout_marginLeft="5dp"
+                        android:text="学号" />
+                    <TextView
+                        android:id="@+id/studentNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:maxLength="60"
+                        android:text="1414080903229" />
+                    <ImageView style="@style/img_arrow"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

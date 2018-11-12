@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task.xsd
+	    http://www.springframework.org/schema/cache
+	    http://www.springframework.org/schema/cache/spring-cache.xsd">
+	<!-- 扫描包 -->
+ 	<context:component-scan base-package="com.hzu.homework">
+ 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+ 	</context:component-scan>
+	<!-- 注解配置 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+    <context:annotation-config></context:annotation-config>
+    <!-- 引人其他文件 -->
+    <import resource="classpath:/data-source-tx.xml"></import>
+    
+     <!-- hibernate ehcache -->
+    <!--  <cache:annotation-driven cache-manager="cacheManager"></cache:annotation-driven>
+    
+     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"></property>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          p:configLocation="classpath:config/ehcache.xml" p:shared="true"/> -->
+
+</beans>

@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/sysback/login.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/sysback/main.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/sysback/news/newsList.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/sysback/teacher/teacherAdd.jsp=UTF-8
+encoding//WebContent/WEB-INF/static/sysback/js/newsList.js=UTF-8
+encoding//WebContent/WEB-INF/static/sysback/json/newsList.json=UTF-8
+encoding//WebContent/WEB-INF/static/sysback/json/teacherList.json=UTF-8
+encoding//WebContent/WEB-INF/static/sysback/layui/css/layui.css=UTF-8
+encoding//src/main/java/com/hzu/homework/util/DateUtil.java=UTF-8
+encoding//src/main/java/com/hzu/homework/util/PraseMimeMessage.java=UTF-8
+encoding/<project>=GBK

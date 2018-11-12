@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sendTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="20:11" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/user"
+            android:scaleType="centerCrop" />
+
+
+        <com.github.library.bubbleview.BubbleTextVew
+            android:id="@+id/context"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/ivIcon"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="1dip"
+            android:maxWidth="260dip"
+            android:padding="10dp"
+            android:text="Hello BubbleTextVew"
+            android:textColor="@android:color/white"
+            android:textSize="16dip"
+            app:angle="8dp"
+            app:arrowHeight="10dp"
+            app:arrowLocation="right"
+            app:arrowPosition="14dp"
+            app:arrowWidth="8dp"
+            app:bubbleColor="#03a9f4" />
+
+    </RelativeLayout>
+
+</LinearLayout>
