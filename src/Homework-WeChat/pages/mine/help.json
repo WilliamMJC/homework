@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "帮助",
+    "usingComponents": {
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "wux-cell": "../../lib/wux-weapp-master/cell/index"
+    }
+}

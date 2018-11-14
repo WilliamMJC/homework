@@ -1,62 +1,57 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/index/homework",
-
-    "pages/explore/explore",
-    "pages/explore/post",
-    "pages/explore/courses",
-    "pages/explore/schools",
-    "pages/explore/teachers",
-    "pages/explore/share",
-    "pages/explore/sponsors",
-
-    "pages/mine/mine",
-    "pages/mine/setting",
-    "pages/mine/role",
-    "pages/mine/courses",
-    "pages/mine/homeworks",
-    "pages/mine/students",
-    "pages/mine/teachers",
-    "pages/mine/aboutus",
-    "pages/mine/advice",
-    "pages/mine/sponsor",
+  "pages":[
+    "pages/task/taskList",
+    "pages/task/endTask",
+    "pages/task/addTask",
+    "pages/task/task",
     
+    "pages/course/course",
+    "pages/course/info",
+    "pages/course/courseList",
+    "pages/course/addCourse",
+    "pages/index/index",
+    
+    "pages/mine/mine",
+    "pages/mine/help",
+    "pages/mine/setWorkMail",
+    "pages/mine/setting",
+    "pages/mine/about",
+
+    "pages/help/help2",
+    "pages/help/help1",
+    "pages/help/help3",
+
     "pages/logs/logs"
+
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#009444",
-    "navigationBarTitleText": "收发作业",
-    "navigationBarTextStyle": "white"
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "color": "#000000",
-    "selectedColor": "#009444",
+    "color": "#1c2438",
+    "selectedColor": "#2d8cf0",
     "list": [
       {
-        "iconPath": "pages/example/images/home64.png",
-        "selectedIconPath": "pages/example/images/home64_on.png",
-        "pagePath": "pages/index/index",
+        "iconPath": "/images/homepage.png",
+        "selectedIconPath": "/images/homepage_fill.png",
+        "pagePath": "pages/task/taskList",
         "text": "首页"
       },
       {
-        "iconPath": "pages/example/images/explore64.png",
-        "selectedIconPath": "pages/example/images/explore64_on.png",
-        "pagePath": "pages/explore/explore",
-        "text": "发现"
+        "iconPath": "/images/tasklist.png",
+        "selectedIconPath": "/images/tasklist_fill.png",
+        "pagePath": "pages/course/courseList",
+        "text": "课程"
       },
       {
-        "iconPath": "pages/example/images/user64.png",
-        "selectedIconPath": "pages/example/images/user64_on.png",
+        "iconPath": "/images/mine.png",
+        "selectedIconPath": "/images/mine_fill.png",
         "pagePath": "pages/mine/mine",
         "text": "我"
       }
     ]
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
-  },
-  "debug": true
+  }
 }

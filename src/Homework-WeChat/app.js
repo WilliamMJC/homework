@@ -1,30 +1,27 @@
 //app.js
+import Api from './utils/api.js';
 App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-  },
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
+    onLaunch: function () {
+        const that = this;
+        wx.getSystemInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      })
-    }
-  },
-  globalData:{
-    userInfo:null
-  }
+                that.globalData.systemInfo = { windowWidth: res.windowWidth, windowHeigth: res.windowHeight };
+            },
+        });
+
+        // let data = {
+        //     courseId: 1,
+        //     taskName: 'test111',
+        //     startTime: '2018-09-08 17:34:00',
+        //     endTime: '2018-09-15 17:34:00',
+        // }
+        // Api.createTask(data)
+        //     .then(res => {
+        //         console.log(res);
+        //     });
+
+    },
+    globalData: {
+        systemInfo: {},
+    },
 })

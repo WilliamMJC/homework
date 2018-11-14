@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.SignInDao">
+    <insert id="initSignIn">
+        INSERT INTO
+        sign_in (sign_in_id, course_id, user_id)
+          SELECT #{signInId}, #{courseId}, user_id
+          FROM course_member
+          WHERE course_id=#{courseId} AND type='student'
+    </insert>
+
+    <update id="updateSignIn" parameterType="com.zt.homework.entity.SignIn">
+        UPDATE sign_in
+        SET is_sign=#{isSign}, sign_time=#{signTime}
+        WHERE course_id=#{courseId} AND sign_in_id=#{signInId} AND user_id=#{userId}
+    </update>
+
+    <select id="querySignInByCourseId" resultType="com.zt.homework.entity.SignIn">
+        SELECT *
+        FROM sign_in
+        WHERE course_id=#{courseId}
+    </select>
+
+    <select id="querySignInByCourseIdSignInId" resultType="com.zt.homework.entity.SignIn">
+        SELECT *
+        FROM sign_in
+        WHERE course_id=#{courseId} AND sign_in_id=#{signInId}
+    </select>
+
+    <select id="querySignInByCourseIdUserId" resultType="com.zt.homework.entity.SignIn">
+        SELECT *
+        FROM sign_in
+        WHERE course_id=#{courseId} AND user_id=#{userId}
+    </select>
+</mapper>

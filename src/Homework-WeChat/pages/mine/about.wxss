@@ -1,0 +1,4 @@
+.page__hd {
+    background-color: white;
+    padding: 10px;
+}

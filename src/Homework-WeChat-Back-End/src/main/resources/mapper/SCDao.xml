@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.SCDao">
+    <insert id="insertSCs" parameterType="com.zt.homework.entity.SC">
+        INSERT INTO
+        sc (course_id, stu_id)
+        VALUES 
+        <foreach item="item" index="index" collection="list" separator =",">
+            (#{item.courseId}, #{item.stuId})
+        </foreach>
+    </insert>
+
+    <insert id="insertSC" parameterType="com.zt.homework.entity.SC">
+        INSERT INTO
+            sc (course_id, stu_id)
+        VALUES (#{courseId}, #{stuId})
+    </insert>
+
+    <delete id="deleteSCBySC" parameterType="com.zt.homework.entity.SC">
+        DELETE FROM
+        sc WHERE course_id=#{courseId} AND stu_id=#{stuId}
+    </delete>
+
+    <delete id="deleteSCsByStuId">
+        DELETE FROM
+            sc
+        WHERE stu_id=#{stuId}
+    </delete>
+
+    <delete id="deleteSCsByCourseId">
+        DELETE FROM
+            sc
+        WHERE course_id=#{courseId}
+    </delete>
+
+    <update id="updateSCBySC">
+        UPDATE sc
+        SET stu_id=#{newStuId}
+        WHERE stu_id=#{sc.stuId} AND course_id=#{sc.courseId}
+    </update>
+
+    <select id="hasSC" parameterType="com.zt.homework.entity.SC" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM sc
+        WHERE course_id=#{courseId} AND stu_id=#{stuId}
+    </select>
+
+    <select id="querySCByCourseId" resultType="com.zt.homework.entity.SC">
+        SELECT *
+        FROM sc
+        WHERE course_id=#{courseId}
+    </select>
+</mapper>

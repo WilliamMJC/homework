@@ -1,0 +1,19 @@
+{
+    "navigationBarTitleText": "我的课程",
+    "usingComponents": {
+        "wux-tabs": "../../lib/wux-weapp-master/tabs/index",
+        "wux-tab": "../../lib/wux-weapp-master/tab/index",
+        "wux-badge": "../../lib/wux-weapp-master/badge/index",
+        "wux-prompt": "../../lib/wux-weapp-master/prompt/index",
+        "wux-floating-button": "../../lib/wux-weapp-master/floating-button/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-card": "../../lib/wux-weapp-master/card/index",
+        "wux-wing-blank": "../../lib/wux-weapp-master/wing-blank/index",
+        "wux-white-space": "../../lib/wux-weapp-master/white-space/index",
+        "wux-spin": "../../lib/wux-weapp-master/spin/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-loading": "../../lib/wux-weapp-master/loading/index",
+        "van-notify": "../../lib/vant-weapp/notify/index"
+    }
+}

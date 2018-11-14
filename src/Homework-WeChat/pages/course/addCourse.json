@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText": "添加课程",
+    "usingComponents": {
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "van-field": "../../lib/vant-weapp/field/index",
+        "van-notify": "../../lib/vant-weapp/notify/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-switch": "../../lib/wux-weapp-master/switch/index",
+        "wux-cell": "../../lib/wux-weapp-master/cell/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-animation-group": "../../lib/wux-weapp-master/animation-group/index",
+        "wux-loading": "../../lib/wux-weapp-master/loading/index",
+        "van-cell": "../../lib/vant-weapp/cell/index"
+    }
+}

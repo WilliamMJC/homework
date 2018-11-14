@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.UserDao">
+    <select id="getAllUser" resultType="com.zt.homework.entity.User">
+        SELECT *
+        FROM user
+    </select>
+
+    <insert id="insertUser" useGeneratedKeys="true" parameterType="com.zt.homework.entity.User" keyProperty="userId" keyColumn="user_id">
+        INSERT INTO
+        user (openid)
+        VALUES (#{openid})
+    </insert>
+
+    <select id="queryUserByUserId" resultType="com.zt.homework.entity.User">
+        SELECT *
+        FROM user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryUserByOpenId" resultType="com.zt.homework.entity.User">
+        SELECT *
+        FROM user
+        WHERE openid = #{openid}
+    </select>
+
+    <update id="updateUser" parameterType="com.zt.homework.entity.User">
+        UPDATE user
+        <set>
+            <if test="personalId != null and personalId != ''">personal_id=#{personalId},</if>
+            <if test="username != null and username != ''">username=#{username},</if>
+            <if test="personalMail != null and personalMail != ''">personal_mail=#{personalMail},</if>
+            <if test="workMail != null and workMail != ''">work_mail=#{workMail},</if>
+            <if test="workMailPwd != null and workMailPwd != ''">work_mail_pwd=#{workMailPwd},</if>
+            <if test="school != null and school != ''">school=#{school}</if>
+        </set>
+        WHERE user_id=#{userId};
+    </update>
+
+    <select id="queryUserNameByCourseId" resultType="java.lang.String">
+        SELECT username
+        FROM user
+        WHERE user_id IN (
+            SELECT user_id
+            FROM course_member
+            WHERE course_id=#{courseId} and type="teacher"
+        )
+    </select>
+
+    <select id="queryAllTeaTypeUser" resultType="com.zt.homework.entity.User">
+        SELECT *
+        FROM user
+        WHERE user_id IN (
+            SELECT user_id
+            FROM course_member
+            WHERE type="teacher"
+        )
+    </select>
+
+    <select id="queryTeaUserByCourseId" resultType="com.zt.homework.entity.User">
+        SELECT *
+        FROM user
+        WHERE user_id IN (
+            SELECT user_id
+            FROM course_member
+            WHERE course_id=#{courseId}  AND type="teacher"
+        )
+    </select>
+</mapper>

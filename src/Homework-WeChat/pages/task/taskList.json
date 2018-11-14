@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "首页",
+    "usingComponents": {
+        "wux-floating-button": "../../lib/wux-weapp-master/floating-button/index",
+        "wux-prompt": "../../lib/wux-weapp-master/prompt/index",
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "wux-cell": "../../lib/wux-weapp-master/cell/index",
+        "wux-media": "../../lib/wux-weapp-master/media/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-spin": "../../lib/wux-weapp-master/spin/index"
+    }
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.homework.dao.TaskDao">
+    <insert id="insertTask" parameterType="com.zt.homework.entity.Task" useGeneratedKeys="true" keyColumn="task_id"
+            keyProperty="taskId">
+        INSERT INTO
+        task
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            task_id, course_id, task_name, start_time, end_time, accept_type,
+            <if test="taskDesc != null and taskDesc != ''">task_desc</if>
+        </trim>
+        <trim prefix="value (" suffix=")" suffixOverrides=",">
+            #{taskId}, #{courseId}, #{taskName}, #{startTime}, #{endTime}, #{acceptType},
+            <if test="taskDesc != null and taskDesc != ''">#{taskDesc}</if>
+        </trim>
+    </insert>
+
+    <select id="queryTaskByTaskIdCourseId" resultType="com.zt.homework.entity.Task">
+        SELECT *
+        FROM task
+        WHERE task_id = #{taskId} AND course_id = #{courseId}
+    </select>
+
+    <select id="queryTaskByCourseId" resultType="com.zt.homework.entity.Task">
+        SELECT *
+        FROM task
+        WHERE course_id = #{courseId}
+    </select>
+
+    <select id="queryTaskByUserId" resultType="com.zt.homework.entity.Task">
+        SELECT *
+        FROM task
+        WHERE course_id IN (
+            SELECT course_id
+            FROM course_member
+            WHERE user_id = #{userId}
+        )
+    </select>
+
+    <update id="updateReceiveTime">
+        UPDATE task
+        SET last_receive_time = #{lastReceiveTime}
+        WHERE task_id = #{taskId} AND course_id = #{courseId}
+    </update>
+
+    <update id="endTask">
+        UPDATE task
+        SET is_task_end = TRUE
+        WHERE task_id = #{taskId} AND course_id = #{courseId}
+    </update>
+
+    <select id="queryTeaTaskByUserId" resultType="com.zt.homework.entity.Task">
+        SELECT *
+        FROM task
+        WHERE course_id IN (
+            SELECT course_id
+            FROM course_member
+            WHERE user_id = #{userId} and type="teacher"
+        )
+    </select>
+</mapper>

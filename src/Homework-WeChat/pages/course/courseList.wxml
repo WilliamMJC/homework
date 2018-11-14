@@ -1,0 +1,90 @@
+<view class="page">
+
+    <wux-floating-button id="wux-floating-button" visible="{{ actionVisible }}" backdrop="{{true}}" theme="positive"
+        buttons="{{ actions }}" position="bottomRight" bind:change="toggleButtons" bind:click="actionButtonTap" />
+
+    <wux-prompt visible="{{ isCourseListEmpty }}" title="空空如也" text="课程列表为空，点击+创建/加入一个课程" />
+
+    <wux-dialog id="wux-dialog" />
+    <wux-loading id="wux-loading" />
+    <wux-toast id="wux-toast" />
+    <van-notify id="form-notify" />
+
+    <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
+        <view class="page__bd">
+            <!-- <wux-tabs auto="{{false}}" current="{{currentTab}}" theme="positive" bind:change="onTabChange">
+                <wux-tab key="tab1" title="我教的课"></wux-tab>
+                <wux-tab key="tab2" title="我听的课"></wux-tab>
+            </wux-tabs> -->
+
+
+            <!-- <view class="weui-tab__content" wx:if="{{ currentTab === 'tab1' }}">
+                <wux-prompt visible="{{ isTeaEmpty }}" title="空空如也" text="课程列表为空，点击+创建一个课程" />
+
+                <block wx:if="{{!isTeaEmpty}}" wx:for="{{teaCourseList}}" wx:key="{{index}}">
+                    <wux-white-space size="default" />
+                    <wux-wing-blank size="default">
+                        <wux-card title="{{item.courseName}}" extra="成员：{{item.memberSize - 1}}" thumb="/images/questions.png" isLink url="{{'/pages/course/course?courseId=' + item.courseId}}">
+                            <view slot="body">
+                                <view class="course_content">
+                                    <image src="/images/barrage.png"></image>
+                                    <text>课程介绍：{{(item.courseDesc==null || item.courseDesc=='')?'无':item.courseDesc}}</text>
+                                </view>
+                                <view class="course_content">
+                                    <image src="/images/createtask.png"></image>
+                                    <text>所有作业：{{item.taskSize}}</text>
+                                </view>
+                            </view>
+                            <view slot="footer">课程号: {{item.courseId}}</view>
+                        </wux-card>
+                    </wux-wing-blank>
+                </block>
+            </view>
+
+            <view class="weui-tab__content" wx:if="{{ currentTab === 'tab2' }}">
+                <wux-prompt visible="{{ isStuEmpty }}" title="空空如也" text="课程列表为空，点击+加入一个课程" />
+
+                <block wx:if="{{!isStuEmpty}}" wx:for="{{stuCourseList}}" wx:key="{{index}}">
+                    <wux-white-space size="default" />
+                    <wux-wing-blank size="default">
+                        <wux-card title="{{item.courseName}}" thumb="/images/questions.png" isLink url="{{'/pages/course/course?courseId=' + item.courseId}}">
+                            <view slot="body">
+                                <view class="course_content">
+                                    <image src="/images/barrage.png"></image>
+                                    <text>课程介绍：{{(item.courseDesc==null || item.courseDesc=='')?'无':item.courseDesc}}</text>
+                                </view>
+                                <view class="course_content">
+                                    <image src="/images/createtask.png"></image>
+                                    <text>所有作业：{{item.taskSize}}</text>
+                                </view>
+                            </view>
+                            <view slot="footer">教师: {{item.teaName}}</view>
+                        </wux-card>
+                    </wux-wing-blank>
+                </block>
+            </view> -->
+
+            <block wx:if="{{!isCourseListEmpty}}" wx:for="{{courseList}}" wx:key="{{index}}">
+                <wux-white-space size="default" />
+                <wux-wing-blank size="default">
+                    <wux-card title="{{item.courseName}}" extra="{{item.memberSize ? '成员：' + (item.memberSize - 1) : ''}}"
+                        thumb="/images/questions.png" isLink url="{{'/pages/course/course?courseId=' + item.courseId}}">
+                        <view slot="body">
+                            <view class="course_content">
+                                <image src="/images/barrage.png"></image>
+                                <text>课程介绍：{{(item.courseDesc==null || item.courseDesc=='')?'无':item.courseDesc}}</text>
+                            </view>
+                            <view class="course_content">
+                                <image src="/images/createtask.png"></image>
+                                <text>所有作业：{{item.taskSize}}</text>
+                            </view>
+                        </view>
+                        <view slot="footer">{{item.teaName ? ('教师：' + item.teaName) : ('课程号:'+ item.courseId)}}</view>
+                    </wux-card>
+                </wux-wing-blank>
+                <view wx-if="{{index === courseList.length - 1}}" style="padding-bottom: 15px"></view>
+            </block>
+        </view>
+    </wux-spin>
+
+</view>

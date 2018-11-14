@@ -1,0 +1,31 @@
+<view class="page">
+    <van-notify id="form-notify" />
+    <wux-toast id="wux-toast" />
+
+    <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
+        <form bindsubmit="formSubmit">
+            <wux-cell-group title="设置作业邮箱">
+                    <van-field 
+                    name="workMail" 
+                    value="{{workMail}}"
+                    type="text" 
+                    label="作业邮箱" 
+                    placeholder="请输入作业邮箱" 
+                    required 
+                    border="{{ true }}" />
+                <van-field 
+                    name="workMailPwd"
+                    value="{{workMailPwd}}"
+                    type="text" 
+                    label="邮箱授权码" 
+                    placeholder="请输入作业邮箱授权码" 
+                    required 
+                    border="{{ false }}" />
+            </wux-cell-group>
+    
+            <view class="weui-btn-area">
+                <button class="wux-button--positive" hover-class="wux-button--hover" form-type="submit" loading="{{btnLoading}}" disabled="{{btnLoading}}">确定</button>
+            </view>
+        </form>
+    </wux-spin>
+</view>

@@ -1,0 +1,50 @@
+<view class="page">
+    <view class="weui-article">
+        <view class="weui-article__h1">如何配置非公开的课程</view>
+        <view class="weui-article__section">
+            <view class="weui-article__title">创建课程</view>
+            <view class="weui-article__section">
+                <view class="weui-article__h3">1.1 创建</view>
+                <view class="weui-article__p">
+                    在“课程”页面右下角点击“+”按钮，点击弹出的“创建课程按钮”，将进入课程创建页面
+                </view>
+                <view class="weui-article__p">
+                    <image class="weui-article__img" src="/images/help/help3-1.jpg" mode="aspectFit" style="height: 180px" />
+                </view>
+            </view>
+            <view class="weui-article__section">
+                <view class="weui-article__h3">1.2 设置非公开课程</view>
+                <view class="weui-article__p">
+                    在“添加课程”页面填写课程信息，并将“允许所有人加入”设为否，点击确定。
+                </view>
+                <view class="weui-article__p">
+                    <image class="weui-article__img" src="/images/help/help3-2.png" mode="aspectFit" style="height: 180px" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-article__title">配置学号列表</view>
+        <view class="weui-article__section">
+            <view class="weui-article__h3">2.1 创建学号txt文件</view>
+            <view class="weui-article__p">
+                创建一个txt文件，每一行为一个学生的学号
+            </view>
+            <view class="weui-article__p">
+                <image class="weui-article__img" src="/images/help/help3-3.png" mode="aspectFit" style="height: 180px" />
+            </view>
+            <view class="weui-article__h3">2.2 发送学号邮件</view>
+            <view class="weui-article__p">
+                发送一封邮件到你的作业邮箱，邮件主题为“课程名-学生列表”，附件为刚刚创建的学号txt文件
+            </view>
+            <view class="weui-article__p">
+                <image class="weui-article__img" src="/images/help/help3-4.png" mode="aspectFit" style="height: 180px" />
+            </view>
+            <view class="weui-article__h3">2.3 完成创建</view>
+            <view class="weui-article__p">
+                在小程序端点击“我已发送”，即可完成创建
+            </view>
+            <view class="weui-article__p">
+                <image class="weui-article__img" src="/images/help/help3-5.png" mode="aspectFit" style="height: 180px" />
+            </view>
+        </view>
+    </view>
+</view>

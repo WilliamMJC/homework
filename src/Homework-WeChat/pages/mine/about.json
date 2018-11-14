@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "关于小程序",
+    "usingComponents": {
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-cell": "../../lib/wux-weapp-master/cell/index"
+    }
+}

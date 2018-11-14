@@ -1,0 +1,31 @@
+<view class="page">
+
+    <wux-toast id="wux-toast" />
+
+    <view class="logo">
+        <image src="{{isTeacher?'/images/teacher.png':'/images/student.png'}}" />
+        <view>{{userInfo.username}}</view>
+    </view>
+
+    <view class="page-body">
+        <wux-cell-group title="个人信息">
+            <van-cell title="学校" value="{{userInfo.school}}" />
+            <van-cell title="{{isTeacher?'作业邮箱':'个人邮箱'}}" value="{{userInfo.mail}}" />
+            <van-cell title="{{isTeacher?'工号':'学号'}}" value="{{userInfo.personalId}}" />
+        </wux-cell-group>
+    </view>
+
+    <wux-white-space size="default" />
+
+    <wux-accordion-group title="" defaultCurrent="" wx:if="{{ userInfo.homeworkDtoList !== null }}">
+        <wux-accordion title="作业提交记录">
+            <wux-white-space size="default" />
+            <wux-steps direction="vertical">
+                <block wx:for="{{userInfo.homeworkDtoList}}" wx:key="{{index}}">
+                    <wux-step status="{{item==null?'error':'finish'}}" title="{{userInfo.username}}" content="{{item== null ? '未提交':item.sentDate}}"
+                        index="{{index}}" isLink bind:click="onHomeworkTap"></wux-step>
+                </block>
+            </wux-steps>
+        </wux-accordion>
+    </wux-accordion-group>
+</view>

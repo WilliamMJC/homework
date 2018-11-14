@@ -1,0 +1,18 @@
+{
+    "navigationBarTitleText": "作业详情",
+    "usingComponents": {
+        "wux-cell-group": "../../lib/wux-weapp-master/cell-group/index",
+        "wux-white-space": "../../lib/wux-weapp-master/white-space/index",
+        "wux-accordion-group": "../../lib/wux-weapp-master/accordion-group/index",
+        "wux-accordion": "../../lib/wux-weapp-master/accordion/index",
+        "wux-steps": "../../lib/wux-weapp-master/steps/index",
+        "wux-step": "../../lib/wux-weapp-master/step/index",
+        "wux-card": "../../lib/wux-weapp-master/card/index",
+        "wux-icon": "../../lib/wux-weapp-master/icon/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index",
+        "wux-spin": "../../lib/wux-weapp-master/spin/index",
+        "wux-loading": "../../lib/wux-weapp-master/loading/index",
+        "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
+        "wux-toast": "../../lib/wux-weapp-master/toast/index"
+    }
+}
