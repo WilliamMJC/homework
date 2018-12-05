@@ -27,12 +27,20 @@
 
             <wux-white-space size="default" />
 
+            <wux-cell-group>
+                
+            </wux-cell-group>
+
+            <wux-white-space size="default" />
+
+            
+
             <wux-accordion-group title="" defaultCurrent="" wx:if="{{ true }}">
                 <wux-accordion title="作业提交数({{size}} | {{task.total}})">
                     <wux-white-space size="default" />
                     <wux-steps direction="vertical">
                         <block wx:for="{{task.receive}}" wx:key="{{index}}">
-                            <view class="wux-class wux-step wux-step--vertical wux-step--finish" hover-class="wux-cell--hover" bindtap="onHomeworkTap" index="{{index}}" style="width: 100%;">
+                            <view class="wux-class wux-step wux-step--vertical wux-step--finish" hover-class="wux-cell--hover" bindtap="onHomeworkTap" data-index="{{index}}" style="width: 100%;">
                                 <view class="wux-step__hd">
                                     <view class="wux-step__icon">{{ index + 1 }}</view>
                                 </view>

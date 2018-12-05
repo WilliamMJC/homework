@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class testController {
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ResponseEntity<Result> test() {
         return ResponseEntity.ok(ResultUtil.success());
     }

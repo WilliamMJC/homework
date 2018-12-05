@@ -3,7 +3,6 @@ package com.zt.homework.service;
 import com.zt.homework.Utils.DateUtil;
 import com.zt.homework.Utils.IOUtil;
 import com.zt.homework.Utils.MailSent;
-import com.zt.homework.config.AppContext;
 import com.zt.homework.dao.ConstructionDao;
 import com.zt.homework.dao.CourseDao;
 import com.zt.homework.dao.HomeworkDao;
@@ -17,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,11 +46,11 @@ public class ConstructionService {
     private HomeworkDao homeworkDao;
 
     @Transactional
-    public void createConstruction(Integer courseId, Integer taskId) {
+    @Async
+    public void createConstruction(Integer courseId, Integer taskId, Integer userId) {
         String path = courseId + File.separator + taskId;
         String zipPath = courseId + File.separator + taskId + ".zip";
         if (IOUtil.folder2Zip(path, zipPath)) {
-            Integer userId = AppContext.getCurrentUserId();
             User user = userDao.queryUserByUserId(userId);
 
             String mailTo = user.getPersonalMail();
@@ -71,13 +71,22 @@ public class ConstructionService {
             boolean isAnyFileLink = !fileLinKString.equals("");
 
             String content = "<div style=\" \">" +
-                    "<h1>这是" + subject + "的作业文件，请注意查收\"</h1>" +
-                    "<h2 style=\"display:" + isAnyFileLink + "\">以下是超大附件下载链接，点击即可下载</h2>" +
+                    "<h1>这是" + subject + "的作业文件，请注意查收</h1>" +
+                    "<h2 style=\"display:" + (isAnyFileLink ? "block" : "none") + "\">以下是超大附件下载链接，点击即可下载</h2>" +
                     "<ul>" + fileLinKString + "</ul>" +
                     "<div/>";
 
             String attachFilePath = homeDir + zipPath;
             String attachFileName = subject + ".zip";
+
+            // 如果附件大小超过30m，则转为发送链接
+            long zipFileSize = IOUtil.getFileSize(zipPath);
+            if(zipFileSize > 30 * 1024 * 1024) {
+                String zipUrl = "https://homework.infoaas.com/homework/construction/zip/" + courseId + "/" + taskId;
+                content += "<h2>文件大小超过邮箱附件大小限制，请点击链接下载（大小："+ IOUtil.fileSizeFormat(zipFileSize) +"）</h2>" +
+                        "<a target=\"_blank\" href=\"" + zipUrl + "\">作业邮件链接</a>";
+                attachFilePath = "";
+            }
 
             try {
                 MailSent.sendMailWithAttach(mailTo, mailFrom, mailPwd, subject, content, attachFilePath, attachFileName);

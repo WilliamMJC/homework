@@ -39,7 +39,7 @@ public class ThirdSessionAuthFilter extends OncePerRequestFilter {
         String authHeader = httpServletRequest.getHeader(this.tokenHeader);
         String url = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
 
-        if (url.equals("/auth") || url.equals("/test")) {
+        if (url.equals("/auth") || url.equals("/test") || url.startsWith("/construction/zip/")) {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }

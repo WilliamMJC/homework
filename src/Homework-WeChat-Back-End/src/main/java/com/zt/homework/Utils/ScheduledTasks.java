@@ -21,7 +21,7 @@ public class ScheduledTasks {
     @Autowired
     private MailReceiveService mailReceiveService;
 
-    @Scheduled(cron = "0 */5 *  * * * ")
+    @Scheduled(cron = "0 */10 *  * * * ")
     public void queryAllMail(){
         LOGGER.info("邮件检索开始时间：" + DateUtil.Date2String(new Date()));
         mailReceiveService.queryAllMail();
