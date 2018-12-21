@@ -209,7 +209,7 @@ public class TaskService {
         return endTaskDto;
     }
 
-    public TotalTaskDto getTaskDtoByCourseId(Integer courseId){
+    public TotalTaskDto getTotalTaskDtoByCourseId(Integer courseId){
         TotalTaskDto totalTaskDto=new TotalTaskDto();
         //获取该课程人数
         List<CourseMember> courseMembers = courseMemberDao.queryCMByCourseId(courseId);

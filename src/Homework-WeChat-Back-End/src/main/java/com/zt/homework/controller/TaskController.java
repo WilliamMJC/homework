@@ -38,8 +38,8 @@ public class TaskController {
     }
 
     @GetMapping(value = "/task/{courseId}")
-    public ResponseEntity<Result> getTaskById(@PathVariable Integer courseId) {
-        TotalTaskDto totalTask=taskService.getTaskDtoByCourseId(courseId);
+    public ResponseEntity<Result> getTotalTaskById(@PathVariable Integer courseId) {
+        TotalTaskDto totalTask=taskService.getTotalTaskDtoByCourseId(courseId);
         return ResponseEntity.ok(ResultUtil.success(totalTask));
     }
 

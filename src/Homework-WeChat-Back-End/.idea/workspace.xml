@@ -7,23 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5e02218-d57c-4021-8fac-6b7990d1d1e6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zt/homework/filters/ThirdSessionAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zt/homework/filters/ThirdSessionAuthFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zt/homework/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zt/homework/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/pages/course/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/pages/course/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/pages/course/course.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/pages/course/course.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/pages/task/taskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/pages/task/taskList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/utils/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/utils/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/utils/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/utils/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Homework-WeChat/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework-WeChat/utils/request.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/Utils/ExcelUtill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="378">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -119,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+            <state relative-caret-position="243">
+              <caret line="46" column="80" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
             </state>
           </provider>
         </entry>
@@ -133,8 +118,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/service/TaskService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="219" column="21" lean-forward="true" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
+            <state relative-caret-position="281">
+              <caret line="211" column="32" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,13 +199,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/controller/AuthController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/dto/TotalTaskDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/dto/HomeWorkInfoForExcel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/filters/ThirdSessionAuthFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/Utils/ExcelUtill.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-prod.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/service/TaskService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java" />
       </list>
     </option>
   </component>
@@ -252,7 +237,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="454" />
     <option name="width" value="640" />
     <option name="height" value="1040" />
@@ -265,8 +250,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -679,6 +664,7 @@
       <workItem from="1545291795964" duration="6000" />
       <workItem from="1545361038018" duration="1410000" />
       <workItem from="1545376964385" duration="779000" />
+      <workItem from="1545380332360" duration="1005000" />
     </task>
     <servers />
   </component>
@@ -715,7 +701,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="513979000" />
+    <option name="totallyTimeSpent" value="514984000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -730,7 +716,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4939551" visible="true" weight="0.23720682" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4939551" visible="true" weight="0.23987207" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -739,7 +725,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" sideWeight="0.5060449" side_tool="true" weight="0.28517398" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4969743" weight="0.3449024" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.4969743" visible="true" weight="0.3449024" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49546143" weight="0.4002169" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -1108,6 +1094,23 @@
     <entry file="file://$PROJECT_DIR$/target/homework-0.0.1-SNAPSHOT/WEB-INF/classes/application-prod.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="59" lean-forward="true" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/Utils/ExcelUtill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1135,37 +1138,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="59" lean-forward="true" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/Utils/ExcelUtill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/mapper/TaskDao.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/controller/TaskController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+        <state relative-caret-position="243">
+          <caret line="46" column="80" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zt/homework/service/TaskService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="219" column="21" lean-forward="true" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
+        <state relative-caret-position="281">
+          <caret line="211" column="32" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
