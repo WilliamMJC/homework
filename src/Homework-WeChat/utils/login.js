@@ -21,7 +21,7 @@ const login = {
                 url: CHECK_URL,
                 header: header
             }).then(res => {
-                // console.log(res);
+                console.log(res);
                 if (res.data.code !== 0) {
                     checkThridSessionPromise = null;
                     reject(false);

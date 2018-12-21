@@ -494,4 +494,12 @@ Page({
             path: `/pages/course/course?courseId=${this.data.courseId}&total=${this.data.total}` ,
         }
     },
+
+    onCheckTotalHomeworkTap:function(){
+      console.log(this.data.courseId)
+      wx.navigateTo({
+        //需传courseID和taskID
+        url: '/pages/task/totalTask?courseId='+this.data.courseId+"&courseName="+this.data.courseName,
+      })
+    }
 })

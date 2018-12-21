@@ -2,10 +2,7 @@ package com.zt.homework.controller;
 
 import com.zt.homework.Utils.ResultUtil;
 import com.zt.homework.config.AppContext;
-import com.zt.homework.dto.EndTaskDto;
-import com.zt.homework.dto.Result;
-import com.zt.homework.dto.TaskDto;
-import com.zt.homework.dto.TaskListItem;
+import com.zt.homework.dto.*;
 import com.zt.homework.entity.Task;
 import com.zt.homework.service.TaskService;
 import net.sf.json.JSONObject;
@@ -38,6 +35,12 @@ public class TaskController {
         Integer userId = AppContext.getCurrentUserId();
         List<TaskListItem> taskList = taskService.getTaskByUserId(userId);
         return ResponseEntity.ok(ResultUtil.success(taskList));
+    }
+
+    @GetMapping(value = "/task/{courseId}")
+    public ResponseEntity<Result> getTotalTaskById(@PathVariable Integer courseId) {
+        TotalTaskDto totalTask=taskService.getTotalTaskDtoByCourseId(courseId);
+        return ResponseEntity.ok(ResultUtil.success(totalTask));
     }
 
     @GetMapping(value = "/task/{courseId}/{taskId}")

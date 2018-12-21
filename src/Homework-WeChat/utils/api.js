@@ -1,4 +1,4 @@
-import request from './request.js';
+  import request from './request.js';
 
 const api = (function () {
     // const _baseUrl = 'https://homework.infoaas.com/homework';
@@ -186,6 +186,16 @@ const api = (function () {
          */
         getEndTaskInfo(courseId, taskId) {
             return _request.getRequest(_baseUrl + '/task/' + courseId + '/' + taskId + '/end');
+        },
+
+        /**
+         * 获取总的作业提交情况
+         *
+         * @param {*} courseId
+         * @returns
+         */
+        getTotalTaskInfo(courseId){
+          return _request.getRequest(_baseUrl+'/task/'+courseId);
         },
 
         /* 邮件相关 */

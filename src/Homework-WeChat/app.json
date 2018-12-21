@@ -4,6 +4,7 @@
     "pages/task/endTask",
     "pages/task/addTask",
     "pages/task/task",
+    "pages/task/totalTask",
     
     "pages/course/course",
     "pages/course/info",
