@@ -7,10 +7,7 @@ import com.zt.homework.dao.CourseMemberDao;
 import com.zt.homework.dao.HomeworkDao;
 import com.zt.homework.dao.TaskDao;
 import com.zt.homework.dao.UserDao;
-import com.zt.homework.dto.EndTaskDto;
-import com.zt.homework.dto.HomeworkDto;
-import com.zt.homework.dto.TaskDto;
-import com.zt.homework.dto.TaskListItem;
+import com.zt.homework.dto.*;
 import com.zt.homework.entity.CourseMember;
 import com.zt.homework.entity.Homework;
 import com.zt.homework.entity.Task;
@@ -161,13 +158,13 @@ public class TaskService {
         return taskDto;
     }
 
-    public EndTaskDto getEndTaskDto(Integer courseId, Integer taskId) {
-        Integer userId = AppContext.getCurrentUserId();
+    public EndTaskDto getEndTaskDto(Integer courseId, Integer taskId) { //图表所需的数据在此获得
+        Integer userId = AppContext.getCurrentUserId(); //获取当前用户id
         if(courseMemberDao.queryCMByCourseIdUserId(courseId, userId) == null) {
-            throw new AuthException(ResultEnum.PERMISSION_DENY);
+            throw new AuthException(ResultEnum.PERMISSION_DENY);    //检查当前用户是否参与该课程
         }
         EndTaskDto endTaskDto = new EndTaskDto();
-        Task task = taskDao.queryTaskByTaskIdCourseId(taskId, courseId);
+        Task task = taskDao.queryTaskByTaskIdCourseId(taskId, courseId); //检查该课程的作业信息
 
         endTaskDto.setCourseId(task.getCourseId());
         endTaskDto.setTaskId(task.getTaskId());
@@ -175,14 +172,14 @@ public class TaskService {
         endTaskDto.setStartTime(DateUtil.timestamp2String(task.getStartTime()));
         endTaskDto.setEndTime(DateUtil.timestamp2String(task.getEndTime()));
 
-        List<CourseMember> cmList = courseMemberDao.queryCMByCourseId(courseId);
+        List<CourseMember> cmList = courseMemberDao.queryCMByCourseId(courseId); //获取该课程的成员列表
         Integer total = cmList == null ? 0 : cmList.size() - 1;
-        List<Homework> homeworkList = homeworkDao.queryHomeworkByTaskIdCourseId(task.getTaskId(), task.getCourseId());
+        List<Homework> homeworkList = homeworkDao.queryHomeworkByTaskIdCourseId(task.getTaskId(), task.getCourseId());//获取已提交的作业列表
         Integer receive = homeworkList == null ? 0 : homeworkList.size();
 
         // todo 这里待优化
-        List<HomeworkDto> homeworkDtoList = new ArrayList<>();
-        if(total != 0) {
+        List<HomeworkDto> homeworkDtoList = new ArrayList<>();//所有已提交了作业的成员信息
+        if(total != 0) {    //课程成员不为0
             for(CourseMember cm : cmList) {
                 if(cm.getType().equals("teacher")) continue;
                 HomeworkDto homeworkDto = new HomeworkDto();
@@ -194,8 +191,8 @@ public class TaskService {
         }
 
 
-        for(HomeworkDto homeworkDto : homeworkDtoList) {
-            if(receive != 0) {
+        for(HomeworkDto homeworkDto : homeworkDtoList) {    //遍历所有成员
+            if(receive != 0) {  //已提交数不为0
                 for(Homework homework : homeworkList) {
                     if(homeworkDto.getUserId().equals(homework.getUserId())) {
                         homeworkDto.setSentDate(DateUtil.timestamp2String(homework.getSentDate()));
@@ -210,6 +207,29 @@ public class TaskService {
         endTaskDto.setReceive(receive);
         endTaskDto.setUnReceive(total - receive);
         return endTaskDto;
+    }
+
+    public TotalTaskDto getTaskDtoByCourseId(Integer courseId){
+        TotalTaskDto totalTaskDto=new TotalTaskDto();
+        //获取该课程人数
+        List<CourseMember> courseMembers = courseMemberDao.queryCMByCourseId(courseId);
+        Integer totalCM = courseMembers == null ? 0 : courseMembers.size() - 1;
+        //获取课程数
+        List<Task> tasks = taskDao.queryTaskByCourseId(courseId);
+        Integer taskCount=tasks.size();
+        //获取总课程的应收作业数
+        Integer total=totalCM*taskCount;
+        //获取已交作业数
+        Integer totalRecive=0;
+        for(Task ts:tasks){
+            List<Homework> homeworkList = homeworkDao.queryHomeworkByTaskIdCourseId(ts.getTaskId(), ts.getCourseId());
+            Integer individualReceive = homeworkList == null ? 0 : homeworkList.size();
+            totalRecive+=individualReceive;
+        }
+        totalTaskDto.setTotalCM(totalCM);
+        totalTaskDto.setTotal(total);
+        totalTaskDto.setRecive(totalRecive);
+        return totalTaskDto;
     }
 
     /**

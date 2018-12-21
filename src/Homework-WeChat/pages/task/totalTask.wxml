@@ -1,0 +1,19 @@
+<view class="page">
+
+  <wux-loading id="wux-loading" />
+  <wux-toast id="wux-toast" />
+  <wux-dialog id="wux-dialog" />
+
+  <view class="page__hd">
+    <view class="page__title">课程名：{{courseName}}</view>
+    <view class="page__desc">总参加人数：{{TotalTask.totalCM}}</view>
+    <view class="page__desc">应收作业份数：{{TotalTask.total}}</view>
+  </view>
+
+  <view class="page__bd">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px"></canvas>
+
+    <wux-white-space size="default" />
+
+  </view>
+</view>

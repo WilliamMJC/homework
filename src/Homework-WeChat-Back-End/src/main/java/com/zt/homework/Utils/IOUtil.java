@@ -15,6 +15,8 @@ public class IOUtil {
 
     private static String homeDir;
 
+    static final int BUFFER = 8192;
+
     @Value("${homeDir}")
     public void setHomeDir(String s) {
         homeDir = s;
@@ -131,6 +133,7 @@ public class IOUtil {
     }
 
     /**
+     * todo 这里待修改
      * 压缩文件夹
      * @param path
      * @param zipPath
@@ -140,6 +143,7 @@ public class IOUtil {
         File file = new File(homeDir + path);
         File zipFile = new File(homeDir + zipPath);
         InputStream in = null;
+        BufferedInputStream bi = null;
         try {
             ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
             zipOut.setComment("hello");
@@ -147,12 +151,13 @@ public class IOUtil {
                 File[] files = file.listFiles();
                 for(int i =0; i < files.length; i++) {
                     in = new FileInputStream(files[i]);
+                    bi = new BufferedInputStream(in);
                     zipOut.putNextEntry(new ZipEntry(file.getName() + File.separator + files[i].getName()));
                     int temp = 0;
-                    while ((temp = in.read()) != -1)
-                        zipOut.write(temp);
-                }
-                if (in != null) {
+                    byte data[] = new byte[BUFFER];
+                    while ((temp = bi.read(data, 0, BUFFER)) != -1)
+                        zipOut.write(data, 0, temp);
+                    bi.close();
                     in.close();
                 }
             }
@@ -163,6 +168,10 @@ public class IOUtil {
             return false;
         }
     }
+
+//    public static void compressFolder(File file, ZipOutputStream zipOut, ) {
+//
+//    }
 
     /**
      * 获得文件大小

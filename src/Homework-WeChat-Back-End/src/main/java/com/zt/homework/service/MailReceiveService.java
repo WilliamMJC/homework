@@ -77,6 +77,7 @@ public class MailReceiveService {
             for (int i = messages.length - 1; i >= 0; i--) {
                 ParseMimeMessage pmm = new ParseMimeMessage((MimeMessage) messages[i]);
                 Date sentDate = pmm.getSentDate();
+//                System.out.println(sentDate);
 
                 // 将邮件发送时间跟邮件查询断点时间进行比较，如果发送时间在断点时间之后，则对该邮件进行检测，否则将本次查询的最新邮件发送时间保存到数据库，退出本次循环
                 if (DateUtil.compare(breakPointTime, sentDate)) {
@@ -244,8 +245,6 @@ public class MailReceiveService {
         if(acceptTypeList.endsWith("|")) {
             acceptTypeList = acceptTypeList.substring(0, acceptTypeList.length() - 1);
         }
-
-        System.out.println(acceptTypeList);
 
         Pattern pattern = Pattern.compile(acceptTypeList);
         Matcher matcher = pattern.matcher(fileName);

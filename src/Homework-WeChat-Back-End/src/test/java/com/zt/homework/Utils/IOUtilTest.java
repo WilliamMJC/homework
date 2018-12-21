@@ -65,9 +65,8 @@ public class IOUtilTest {
 
     @Test
     public void folder2Zip() {
-        String path = "test";
-        String zipPath = "test.zip";
-        if ((!IOUtil.folder2Zip(path, zipPath))) throw new AssertionError();
+        String path = "\\48\\4";
+        String zipPath = "\\48\\4.zip";        if ((!IOUtil.folder2Zip(path, zipPath))) throw new AssertionError();
     }
 
     @Test

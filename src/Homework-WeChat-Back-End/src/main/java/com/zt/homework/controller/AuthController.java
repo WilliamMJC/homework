@@ -25,7 +25,7 @@ public class AuthController {
     createAuthenticationToken(@RequestBody String param) {
         JSONObject o = JSONObject.fromObject(param);
         String code = o.getString("code");
-
+        System.out.println("code="+code);
         WechatAuthenticationResponse jwtResponse = authService.wechatLogin(code);
 
         return ResponseEntity.ok(ResultUtil.success(jwtResponse));

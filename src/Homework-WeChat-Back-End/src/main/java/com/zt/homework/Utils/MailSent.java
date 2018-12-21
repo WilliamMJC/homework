@@ -52,12 +52,14 @@ public class MailSent {
         multipart.addBodyPart(messageBodyPart);
 
         // 添加附件
-        BodyPart attachBodyPart = new MimeBodyPart();
-        FileDataSource source = new FileDataSource(attachFilePath);
-        attachBodyPart.setDataHandler(new DataHandler(source));
-        attachBodyPart.setFileName(MimeUtility.encodeText(attachFileName));
+        if(!attachFilePath.equals("")) {
+            BodyPart attachBodyPart = new MimeBodyPart();
+            FileDataSource source = new FileDataSource(attachFilePath);
+            attachBodyPart.setDataHandler(new DataHandler(source));
+            attachBodyPart.setFileName(MimeUtility.encodeText(attachFileName));
 
-        multipart.addBodyPart(attachBodyPart);
+            multipart.addBodyPart(attachBodyPart);
+        }
 
         message.setContent(multipart);
 

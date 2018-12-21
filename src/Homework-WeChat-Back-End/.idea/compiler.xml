@@ -13,4 +13,9 @@
       <module name="homeworkService" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="homeworkService" options="-parameters" />
+    </option>
+  </component>
 </project>

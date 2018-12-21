@@ -44,7 +44,7 @@ public class ParseMimeMessageTest {
 
         Folder folder = store.getFolder("INBOX");
         folder.open(Folder.READ_ONLY);
-
+        System.out.println(folder.getMessageCount());
         return folder.getMessages();
     }
 

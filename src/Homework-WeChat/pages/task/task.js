@@ -61,10 +61,10 @@ Page({
                     this.setData({ task: res.data });
                     let arr = res.data.acceptType.toString(2).split('').reverse(),
                         acceptFileType = '';
-                    if(arr[0] === '1') acceptFileType += '.doc ';
-                    if(arr[1] === '1') acceptFileType += '.docx ';
-                    if(arr[2] === '1') acceptFileType += '.pdf ';
-                    if(arr[3] === '1') acceptFileType += '超大附件';
+                    if (arr[0] === '1') acceptFileType += '.doc ';
+                    if (arr[1] === '1') acceptFileType += '.docx ';
+                    if (arr[2] === '1') acceptFileType += '.pdf ';
+                    if (arr[3] === '1') acceptFileType += '超大附件';
                     this.setData({ acceptFileType });
                 }
             })
@@ -135,10 +135,10 @@ Page({
                 } else {
                     let temp = 'task.receive',
                         size = parseInt(this.data.size);
-                    if(this.data.isTeacher) {
+                    if (this.data.isTeacher) {
                         size = res.data.length;
                     } else {
-                        if(this.data.task.receive.length === 0) {
+                        if (this.data.task.receive.length === 0) {
                             size += res.data.length;
                         }
                     }
@@ -149,7 +149,7 @@ Page({
                         color: '#fff',
                         text: '作业信息更新成功',
                     });
-                    this.setData({ 
+                    this.setData({
                         [temp]: res.data,
                         size,
                     });
@@ -183,8 +183,8 @@ Page({
                         type: 'success',
                         duration: 1500,
                         color: '#fff',
-                        text: '作业邮件已成功发送到你的个人邮箱',
-                    });
+                        text: '邮件请求已接收，稍后将会发送到您的私人邮箱',
+                    });  
                 }
             })
             .catch(res => {
@@ -243,13 +243,13 @@ Page({
 
     },
 
-    onHomeworkTap({ detail }) {
+    onHomeworkTap({ currentTarget: { dataset: { index: detail } } }) {
         let { userId, fileType } = this.data.task.receive[detail],
             { courseId, taskId } = this.data;
 
         Api.getHomework(courseId, taskId, userId)
             .then(res => {
-                if (res.statusCode !== 200) { 
+                if (res.statusCode !== 200) {
                     return Promise.reject(res);
                 } else {
                     wx.openDocument({

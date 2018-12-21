@@ -112,6 +112,10 @@
                     </wux-accordion>
                 </wux-accordion-group>
 
+                <view class="weui-btn-area">
+                    <wux-button block type="positive" bind:click="onCheckTotalHomeworkTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">查看总作业情况</wux-button>
+                </view>
+
                 <view wx:if="{{isTeacher && !isCourseEnd}}" class="weui-btn-area">
                     <wux-button block type="positive" bind:click="onEndCourseTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">结束课程</wux-button>
                 </view>

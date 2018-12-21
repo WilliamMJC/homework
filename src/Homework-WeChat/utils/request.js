@@ -147,6 +147,7 @@ class request {
                                     resolve();
                                 })
                                 .catch(res => {
+                                    console.log("dologin失败")
                                     that.errorHandler(res);
                                     reject();
                                 });

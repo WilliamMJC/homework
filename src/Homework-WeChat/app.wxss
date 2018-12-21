@@ -1,6 +1,6 @@
 /**app.wxss**/
 @import 'styles/weui.wxss';
-@import 'styles/skyvow.wxss'
+@import 'styles/skyvow.wxss';
 
 .page {
     height: 100%;
