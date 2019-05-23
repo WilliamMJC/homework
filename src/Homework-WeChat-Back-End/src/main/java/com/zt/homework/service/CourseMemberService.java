@@ -1,11 +1,7 @@
 package com.zt.homework.service;
 
 import com.zt.homework.config.AppContext;
-import com.zt.homework.dao.CourseDao;
-import com.zt.homework.dao.CourseMemberDao;
-import com.zt.homework.dao.SCDao;
-import com.zt.homework.dao.UserDao;
-import com.zt.homework.dto.UserDto;
+import com.zt.homework.dao.*;
 import com.zt.homework.entity.Course;
 import com.zt.homework.entity.CourseMember;
 import com.zt.homework.entity.SC;
@@ -14,10 +10,11 @@ import com.zt.homework.enums.ResultEnum;
 import com.zt.homework.exception.AuthException;
 import com.zt.homework.exception.ResourceNotFoundException;
 import com.zt.homework.exception.ServerException;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,6 +30,9 @@ public class CourseMemberService {
 
     @Autowired
     private SCDao scDao;
+
+    @Autowired
+    private HomeworkDao homeworkDao;
 
     public void deleteCM(Integer courseId, Integer userId) {
         Integer num = courseMemberDao.deleteCM(courseId, userId);
@@ -72,22 +72,24 @@ public class CourseMemberService {
 
     }
 
-    public List<UserDto> queryStuCMByPage(Integer courseId, Integer currPage, Integer pageSize) {
+    public JSONArray queryStuCMByPage(Integer courseId, Integer currPage, Integer pageSize) {
         Integer userId = AppContext.getCurrentUserId();
         CourseMember courseMember = courseMemberDao.queryCMByCourseIdUserId(courseId, userId);
         if (courseMember == null) {
             throw new AuthException(ResultEnum.PERMISSION_DENY);
         }
 
-        List<UserDto> userDtos = new ArrayList<>();
-        List<CourseMember> courseMemberList = courseMemberDao.queryCMByCourseIdWithPage(courseId, currPage * pageSize, pageSize);
+        JSONArray userDtos = new JSONArray();
+        List<CourseMember> courseMemberList = courseMemberDao.queryCMByCourseIdWithPage2(courseId, currPage * pageSize, pageSize);
         for(CourseMember cm : courseMemberList) {
-            UserDto userDto = new UserDto();
-            userDto.setUserId(cm.getUserId());
-            User stu = userDao.queryUserByUserId(cm.getUserId());
-            userDto.setUsername(stu.getUsername());
-            userDto.setPersonalId(cm.getPersonalId());
-            userDtos.add(userDto);
+            User stuUser = userDao.queryUserByUserId(cm.getUserId());
+            JSONObject stu = new JSONObject();
+            stu.put("userId", cm.getUserId());
+            stu.put("username", stuUser.getUsername());
+            stu.put("personalId", stuUser.getPersonalId());
+            Integer length = homeworkDao.queryHomeworkByCourseIdUserId(courseId, stuUser.getUserId()).size();
+            stu.put("homeworkLength", length);
+            userDtos.add(stu);
         }
         return userDtos;
     }

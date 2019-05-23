@@ -73,4 +73,15 @@
         FROM course_member
         WHERE course_id=#{courseId} AND type="teacher"
     </select>
+
+    <select id="queryCMByCourseIdWithPage2" resultType="com.zt.homework.entity.CourseMember">
+        select cm.*, count(h.user_id) amount
+        from course_member cm
+        left join homework h
+        on h.course_id = cm.course_id and h.user_id = cm.user_id
+        where cm.course_id = #{courseId} and cm.type = 'student'
+        group by cm.user_id
+        order by amount ASC
+        limit #{currIndex}, #{pageSize}
+    </select>
 </mapper>

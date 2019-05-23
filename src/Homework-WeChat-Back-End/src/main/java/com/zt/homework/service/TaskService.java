@@ -3,15 +3,9 @@ package com.zt.homework.service;
 import com.zt.homework.Utils.DateUtil;
 import com.zt.homework.Utils.IOUtil;
 import com.zt.homework.config.AppContext;
-import com.zt.homework.dao.CourseMemberDao;
-import com.zt.homework.dao.HomeworkDao;
-import com.zt.homework.dao.TaskDao;
-import com.zt.homework.dao.UserDao;
+import com.zt.homework.dao.*;
 import com.zt.homework.dto.*;
-import com.zt.homework.entity.CourseMember;
-import com.zt.homework.entity.Homework;
-import com.zt.homework.entity.Task;
-import com.zt.homework.entity.User;
+import com.zt.homework.entity.*;
 import com.zt.homework.enums.ResultEnum;
 import com.zt.homework.exception.AuthException;
 import com.zt.homework.exception.ServerException;
@@ -32,6 +26,9 @@ public class TaskService {
 
     @Autowired
     private TaskDao taskDao;
+
+    @Autowired
+    private CourseDao courseDao;
 
     @Autowired
     private CourseMemberDao courseMemberDao;
@@ -142,6 +139,11 @@ public class TaskService {
         taskDto.setAcceptType(task.getAcceptType());
         taskDto.setTaskDesc(task.getTaskDesc());
 
+        Course course = courseDao.queryCourseByCourseId(courseId);
+        taskDto.setCourseName(course.getCourseName());
+
+        User tea = userDao.queryUserByUserId(courseMemberDao.queryTeaByCourseId(courseId).getUserId());
+        taskDto.setTeaMail(tea.getWorkMail());
 
 
         List<CourseMember> cmList = courseMemberDao.queryCMByCourseId(task.getCourseId());

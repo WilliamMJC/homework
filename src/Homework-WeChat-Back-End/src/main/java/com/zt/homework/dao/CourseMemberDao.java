@@ -67,6 +67,14 @@ public interface CourseMemberDao {
     List<CourseMember> queryCMByCourseIdWithPage(@Param("courseId") Integer courseId, @Param("currIndex") int currIndex, @Param("pageSize") int pageSize);
 
     /**
+     * 根据课程id查询cm记录,分页查询并排序
+     *
+     * @param courseId
+     * @return
+     */
+    List<CourseMember> queryCMByCourseIdWithPage2(@Param("courseId") Integer courseId, @Param("currIndex") int currIndex, @Param("pageSize") int pageSize);
+
+    /**
      * 根courseId和userId查询cm
      *
      * @param courseId

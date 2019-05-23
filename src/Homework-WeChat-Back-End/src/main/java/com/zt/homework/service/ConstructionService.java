@@ -81,7 +81,7 @@ public class ConstructionService {
 
             // 如果附件大小超过30m，则转为发送链接
             long zipFileSize = IOUtil.getFileSize(zipPath);
-            if(zipFileSize > 30 * 1024 * 1024) {
+            if(zipFileSize > 20 * 1024 * 1024) {
                 String zipUrl = "https://homework.infoaas.com/homework/construction/zip/" + courseId + "/" + taskId;
                 content += "<h2>文件大小超过邮箱附件大小限制，请点击链接下载（大小："+ IOUtil.fileSizeFormat(zipFileSize) +"）</h2>" +
                         "<a target=\"_blank\" href=\"" + zipUrl + "\">作业邮件链接</a>";

@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.*;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
@@ -95,12 +96,16 @@ public class IOUtilTest {
 
     @Test
     public void readTxt() throws IOException {
-        File file = new File(homeDir + "新建文本文档.txt");
-        InputStream in = new FileInputStream(file);
-        List<String> lines = IOUtil.readTxt(in);
-        for(String line : lines) {
-            System.out.println(line);
-        }
-        assertEquals(9, lines.size());
+//        File file = new File(homeDir + "新建文本文档.txt");
+//        InputStream in = new FileInputStream(file);
+//        List<String> lines = IOUtil.readTxt(in);
+//        for(String line : lines) {
+//            System.out.println(line);
+//        }
+//        assertEquals(9, lines.size());
+        Pattern taskPattern = Pattern.compile("(\\d+)(-)(.+?)(-)(" + "实验1" + ")(-)(#)(" + "1" + ")");
+        Matcher subjectMatcher = taskPattern.matcher("1714080901123-陈晓生-实验1-#1");
+        System.out.println(subjectMatcher.find());
+        System.out.println(subjectMatcher.group(1));
     }
 }

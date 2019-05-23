@@ -9,6 +9,7 @@
         <view class="page__title">作业：{{task.taskName}}</view>
         <!-- <view class="page__desc" wx-if="{{task.isStudent}}">邮件主题：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view>
         <view class="page__desc" wx-if="{{task.isStudent}}">附件命名：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view> -->
+        <view class="page__desc">课程：{{task.courseName}}</view>
         <view class="page__desc">开始时间：{{task.startTime}}</view>
         <view class="page__desc">结束时间：{{task.endTime}}</view>
         <view class="page__desc">接受的文件类型：{{acceptFileType}}</view>
@@ -22,10 +23,16 @@
                 <view slot="body">
                     {{(task.taskDesc === null || task.taskDesc === '') ? '无' : task.taskDesc}}
                 </view>
-                <view slot="footer" wx-if="{{task.isStudent}}">邮件主题&附件命名：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view>
             </wux-card>
 
             <wux-white-space size="default" />
+
+            <wux-card full="{{ true }}" title="提交方式" wx-if="{{task.isStudent}}">
+                <view slot="body">
+                    <view>邮件发送到：{{task.teaMail}}</view>
+                    <view>邮件主题&附件命名：{{task.personalId}}-{{task.stuName}}-{{task.taskName}}-#{{task.taskId}}</view>
+                </view>
+            </wux-card>
 
             <wux-cell-group>
                 

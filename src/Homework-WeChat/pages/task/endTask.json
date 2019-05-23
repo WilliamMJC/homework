@@ -8,6 +8,7 @@
         "wux-step": "../../lib/wux-weapp-master/step/index",
         "wux-loading": "../../lib/wux-weapp-master/loading/index",
         "wux-dialog": "../../lib/wux-weapp-master/dialog/index",
-        "wux-toast": "../../lib/wux-weapp-master/toast/index"
+        "wux-toast": "../../lib/wux-weapp-master/toast/index",
+        "wux-button": "../../lib/wux-weapp-master/button/index"
     }
 }

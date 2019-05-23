@@ -212,9 +212,11 @@ public class ParseMimeMessage {
                         fileName = bodyPart.getFileName();
                         if(fileName.toLowerCase().contains("gb2312"))
                             fileName = MimeUtility.decodeText(fileName);
-                        else if(fileName.contains("gb18030"))
+                        else if(fileName.toLowerCase().contains("gbk"))
                             fileName = MimeUtility.decodeText(fileName);
-                        else if(fileName.contains("UTF-8"))
+                        else if(fileName.toLowerCase().contains("gb18030"))
+                            fileName = MimeUtility.decodeText(fileName);
+                        else if(fileName.toLowerCase().contains("utf-8"))
                             fileName = MimeUtility.decodeText(fileName);
                     }
                     else if (bodyPart.isMimeType("multipart/*"))

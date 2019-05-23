@@ -7,6 +7,8 @@ public class TaskDto {
 
     private Integer courseId;       // 课程id
 
+    private String courseName;     // 课程名
+
     private String taskName;        // 任务名
 
     private String taskDesc;        // 任务描述
@@ -28,6 +30,8 @@ public class TaskDto {
     private String personalId;
 
     private String stuName;
+
+    private String teaMail;
 
     public Integer getTaskId() {
         return taskId;
@@ -131,5 +135,21 @@ public class TaskDto {
 
     public void setStuName(String stuName) {
         this.stuName = stuName;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getTeaMail() {
+        return teaMail;
+    }
+
+    public void setTeaMail(String teaMail) {
+        this.teaMail = teaMail;
     }
 }

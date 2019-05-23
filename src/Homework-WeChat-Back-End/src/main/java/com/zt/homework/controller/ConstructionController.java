@@ -27,7 +27,7 @@ public class ConstructionController {
     private ConstructionService constructionService;
 
 
-
+    // 获取作业附件
     @GetMapping(value = "/construction/{courseId}/{taskId}")
     public ResponseEntity<Result> getConstruction(@PathVariable Integer courseId, @PathVariable Integer taskId) {
         Integer userId = AppContext.getCurrentUserId();
@@ -35,6 +35,7 @@ public class ConstructionController {
         return ResponseEntity.ok(ResultUtil.success());
     }
 
+    // 通过下载链接下载作业附件，当作业邮件大小超过邮箱限制时使用
     @GetMapping(value = "/construction/zip/{courseId}/{taskId}")
     public ResponseEntity<InputStreamResource> getConstructionZip(@PathVariable Integer courseId, @PathVariable Integer taskId) throws IOException {
         String filePath = homeDir + courseId + File.separator + taskId + ".zip";

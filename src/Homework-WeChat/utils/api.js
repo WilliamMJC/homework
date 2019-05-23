@@ -295,6 +295,27 @@ const api = (function () {
         getHomework(courseId, taskId, userId) {
             return _request.fileRequest(_baseUrl + '/homework/' + courseId + '/' + taskId + '/' + userId);
         },
+
+        /**
+         * 创建作业评价excel
+         *
+         * @param {*} courseId
+         * @param {*} taskId
+         */
+        createEvaluation(courseId, taskId) {
+            return _request.getRequest(_baseUrl + '/homework/createEvaluation/' + courseId + '/' + taskId);
+        },
+
+        /**
+         * 完成作业评价
+         *
+         * @param {*} courseId
+         * @param {*} taskId
+         * @returns
+         */
+        completeEvaluation(courseId, taskId) {
+            return _request.getRequest(_baseUrl + '/homework/completeEvaluation/' + courseId + '/' + taskId);
+        }
     };
 
 

@@ -8,10 +8,11 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.3",
+	"libVersion": "2.6.6",
 	"appid": "wx50affb85d8c4fef6",
 	"projectname": "work",
 	"isGameTourist": false,

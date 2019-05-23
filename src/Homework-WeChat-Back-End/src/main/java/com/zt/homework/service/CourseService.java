@@ -288,13 +288,15 @@ public class CourseService {
         courseDto.setTeacher(teacher);
 
         JSONArray stuList = new JSONArray();
-        List<CourseMember> courseMembers = courseMemberDao.queryCMByCourseIdWithPage(courseId, 0, 20);
+        List<CourseMember> courseMembers = courseMemberDao.queryCMByCourseIdWithPage2(courseId, 0, 20);
         for(CourseMember cm : courseMembers) {
-            UserDto stu = new UserDto();
-            stu.setUserId(cm.getUserId());
             User stuUser = userDao.queryUserByUserId(cm.getUserId());
-            stu.setUsername(stuUser.getUsername());
-            stu.setPersonalId(stuUser.getPersonalId());
+            JSONObject stu = new JSONObject();
+            stu.put("userId", cm.getUserId());
+            stu.put("username", stuUser.getUsername());
+            stu.put("personalId", stuUser.getPersonalId());
+            Integer length = homeworkDao.queryHomeworkByCourseIdUserId(courseId, stuUser.getUserId()).size();
+            stu.put("homeworkLength", length);
             stuList.add(stu);
         }
         courseDto.setStuList(stuList);

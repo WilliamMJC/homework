@@ -44,7 +44,7 @@ public class SCService {
         InputStream in = getInitMailFile(userId, courseName);
         List<String> stuIdList = IOUtil.readTxt(in);
         List<SC> scList = new ArrayList<>();
-        for(String stuId : stuIdList) {
+        for (String stuId : stuIdList) {
             SC sc = new SC();
             sc.setStuId(stuId);
             sc.setCourseId(courseId);
@@ -57,6 +57,7 @@ public class SCService {
 
     /**
      * 获取学生列表附件输入流
+     *
      * @param userId
      * @param courseName
      * @return
@@ -66,7 +67,6 @@ public class SCService {
         InputStream in = null;
 
         User user = userDao.queryUserByUserId(userId);
-        String personalMail = user.getPersonalMail();
         String workMail = user.getWorkMail();
         String workMailPwd = user.getWorkMailPwd();
         String host = ConnUtill.getPOP3Host(workMail);
@@ -76,23 +76,18 @@ public class SCService {
         Folder folder = store.getFolder("INBOX");
         folder.open(Folder.READ_ONLY);
         Message[] messages = folder.getMessages();
-
-        for (Message message : messages) {
-            ParseMimeMessage pmm = new ParseMimeMessage((MimeMessage) message);
-            String mailFrom = pmm.getMailFromString();
-            if(mailFrom.equals(personalMail)) {
-                if(pmm.getSubject().equals(courseName + "-学生列表")) {
-                    in = pmm.isContainAttach(message);
-                    if (in == null) {
-                        throw new MailException(ResultEnum.MAIL_WITHOUT_ATTACH_FILE);
-                    } else if (!pmm.getAttachFileName(message).endsWith(".txt")) {
-                        throw new MailException((ResultEnum.ATTACH_FILE_NOT_ACCEPT));
-                    }
-                    break;
+        for(int i = messages.length - 1; i >= 0; i--) {
+            ParseMimeMessage pmm = new ParseMimeMessage((MimeMessage) messages[i]);
+            if (pmm.getSubject().equals(courseName + "-学生列表")) {
+                in = pmm.isContainAttach(messages[i]);
+                if (in == null) {
+                    throw new MailException(ResultEnum.MAIL_WITHOUT_ATTACH_FILE);
+                } else if (!pmm.getAttachFileName(messages[i]).endsWith(".txt")) {
+                    throw new MailException((ResultEnum.ATTACH_FILE_NOT_ACCEPT));
                 }
+                break;
             }
         }
-
         return in;
     }
 
@@ -102,7 +97,7 @@ public class SCService {
         sc.setCourseId(courseId);
         sc.setStuId(stuId);
         Integer num = scDao.updateSCBySC(newStuId, sc);
-        if(num == null || num < 0) {
+        if (num == null || num < 0) {
             throw new ServerException(ResultEnum.SERVER_ERROR);
         }
     }

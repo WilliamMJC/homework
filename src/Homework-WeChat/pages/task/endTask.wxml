@@ -11,7 +11,7 @@
     </view>
 
     <view class="page__bd">
-        <canvas canvas-id="pieCanvas" class="canvas" style="height:300px"></canvas>
+        <canvas canvas-id="pieCanvas" class="canvas" style="{{'height:300px; visibility: ' + showCanvas + ';'}}"></canvas>
 
         <wux-white-space size="default" />
 
@@ -21,7 +21,7 @@
                 <wux-steps direction="vertical">
                     <block wx:for="{{endTask.homeworkDtoList}}" wx:key="{{index}}">
                         <view class="wux-class wux-step wux-step--vertical {{item.sentDate===null?'wux-step--error':'wux-step--finish'}}"
-                            hover-class="wux-cell--hover" bindtap="onHomeworkTap" index="{{index}}" style="width: 100%;">
+                            hover-class="wux-cell--hover" bindtap="onHomeworkTap" data-index="{{index}}" style="width: 100%;">
                             <view class="wux-step__hd">
                                 <view class="wux-step__icon">{{ index + 1 }}</view>
                             </view>
@@ -39,5 +39,9 @@
                 </wux-steps>
             </wux-accordion>
         </wux-accordion-group>
+
+        <view class="weui-btn-area">
+            <wux-button block type="positive" bind:click="onEvalutionTap">评价此次作业</wux-button>
+        </view>
     </view>
 </view>

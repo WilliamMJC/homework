@@ -18,9 +18,9 @@ public class MailSentTest {
 
     @Test
     public void sendMailWithAttach() throws MessagingException, UnsupportedEncodingException {
-        String mailFrom = "2559155740@qq.com";
-        String mailTo = "chasel34@163.com";
-        String mailPwd = "xclytgbzgyrsdjai";
+        String mailFrom = "";   // 发件人邮箱
+        String mailTo = "";     //  收件人邮箱
+        String mailPwd = "";    //  邮箱授权码
         String subject = "这里是测试";
         String content = "中文测试";
         String attachFilePath = homeDir + "4" + File.separator + "1514080901110-测试-java-任务1.docx";

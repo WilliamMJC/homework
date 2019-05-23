@@ -10,7 +10,7 @@
             </wux-cell-group>
     
             <navigator target="miniProgram" open-type="navigate" app-id="wxab55adbdaabf555c" path="pages/index/index" extra-data="" version="release" class="weui-btn-area">
-                <wux-button block type="positive" bind:click="onQuitCourseTap" loading="{{btnLoading}}" disabled="{{btnLoading}}">通过“小留言板”联系我们</wux-button>
+                <wux-button block type="positive" loading="{{btnLoading}}" disabled="{{btnLoading}}">通过“小留言板”联系我们</wux-button>
             </navigator>
     
         </view>

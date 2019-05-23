@@ -7,7 +7,7 @@ const CHECK_URL = 'http://localhost:8080/homework/authStatus'
 // const CHECK_URL = 'https://homework.infoaas.com/homework/authStatus'
     
 let checkWxSessionPromise,
-    checkThridSessionPromise,
+    checkThridSessionPromise, 
     loginPromise;
 
 const login = {

@@ -79,8 +79,16 @@ public class SCDaoTest {
     @Test
     public void hasSC() {
         SC sc = new SC();
-        sc.setStuId("13");
-        sc.setCourseId(1);
+        sc.setStuId("1714080902440");
+        sc.setCourseId(49);
         assertSame(1, scDao.hasSC(sc));
+    }
+
+    @Test
+    public void querySCByCourseId() {
+        List<SC> scList = scDao.querySCByCourseId(49);
+        for(SC sc : scList) {
+            System.out.println(sc.getStuId());
+        }
     }
 }
